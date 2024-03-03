@@ -1,4 +1,49 @@
-.color {
-    background-color: red;
-    width: 80%;
+
+html {
+    font-size: 62.5%;  
 }
+
+* {
+    margin: 0;
+}
+
+.bg {
+    background-color: cadetblue;
+}
+
+.contenedor {
+    width: 130rem;
+    margin: 0 auto;
+    height: 10rem;
+}
+
+.logo_user {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nombre_logo {
+    font-family: "Montserrat", sans-serif;
+    width: 400;
+    font-size: 2.5rem;
+    color: #ffffff;
+}
+
+.usuario {
+    right: 60rem;
+}
+
+.nombre_usuario {
+    font-family: "Montserrat", sans-serif;
+    font-size:  1.7rem;
+    color: #ffffff;
+    padding-left: 88rem;
+}
+
+.icono {
+    font-size: 3rem;
+    color: #ffffff;
+    font-weight: 900;
+}
+
