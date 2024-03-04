@@ -19,60 +19,62 @@
             <i class="fa-regular fa-user icono"></i>     
         </div>
     </div>
-    <section class="contenedor">
-        <div class="registro">
-            <form action="" class="formulario">
-                <fieldset>
-                    <legend>Nuevo Registro</legend>
-                    <label for="">Transacción</label>
-                    <select class="selct" id="">
-                        <option value>Seleccione Opción</option>
-                        <option value="">Compra</option>
-                        <option value="">Venta</option>
-                    </select>
-                    <div class="monto_recibido">
+    <section class="seccion">
+        <form action="" class="formulario">
+            <fieldset>
+                <legend>Nuevo Registro</legend>
+                <div class="contenedor_campo">
+                    <div class="campo">
+                        <label for="">Transacción</label>  
+                        <select class="input" id="">
+                            <option value>Seleccione Opción</option>
+                            <option value="">Compra</option>
+                            <option value="">Venta</option>
+                        </select>
+                    </div>             
+                    <div class="campo">
                         <label for="">Monto Recibido</label>
-                        <input type="text" placeholder="Monto Recibido">
+                        <input class="input"type="number" placeholder="Monto Recibido">
                     </div>
-                    <div class="tipo_moneda">
+                    <div class="campo">
                         <label for="">Moneda</label>
-                        <select class="select_moneda">
+                        <select class=" input select_moneda">
                             <option value="">Tipo Moneda</option>
                             <option value="">Pesos</option>
                             <option value="">Dolares</option>
                             <option value="">Euros</option>
                         </select>
                     </div>
-                    <div class="tasa">
+                    <div class="campo">
                         <label for="">Tasa</label>
-                        <input type="text" placeholder="Tasa">
+                        <input class="input"type="number" placeholder="Tasa">
                     </div>
-                    <div class="comision">
+                    <div class="campo">
                         <label for="">Comisión</label>
-                        <input type="text" placeholder="Comisión">
+                        <input class="input"type="number" placeholder="Comisión">
                     </div>
-                    <div class="total_comision">
+                    <div class="campo">
                         <label for="">Total Comisión</label>
-                        <input type="text" placeholder="Total Comisión">
+                        <input class="input"type="number" placeholder="Total Comisión">
                     </div>
-                    <div class="monto_entregar">
+                    <div class="campo">
                         <label for="">Monto Entregar</label>
-                        <input type="text" placeholder="Monto Entregar">
+                        <input class="input"type="number" placeholder="Monto Entregar">
                     </div>   
-                    <div class="cedula_cliente">
+                    <div class="campo">
                         <label for="">Cédula</label>
-                        <input type="number" placeholder="Cédula">
+                        <input class="input"type="number" placeholder="Cédula">
                     </div>
-                    <div class="Nombre_cliente">
+                    <div class="campo">
                         <label for="">Nombre</label>
-                        <input type="text" placeholder="Nombre Completo">
+                        <input class="input"type="text" placeholder="Nombre Completo">
                     </div>
-
-                    <input type="submit" value="Registrar">
-
-                </fieldset>
-            </form>
-        </div>
+                    <div>
+                        <input class="boton" type="submit" value="Registrar">
+                    </div>
+                </div>
+            </fieldset>
+        </form>
     </section>
 </body>
 </html>
