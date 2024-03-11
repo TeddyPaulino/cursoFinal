@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/fontawesome/css/all.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Lista Comisión</title>  
+</head>
+<body>
+    <div class="bg">
+        <div class="logo_user contenedor">
+            <h1 class="nombre_logo">ExpressExchanger</h1>    
+            <h2 class="nombre_usuario">Teddy Paulino</h2>
+            <i class="fa-regular fa-user icono"></i>     
+        </div>
+    </div>
+    <main class="contenedor">
+        <h1 class="text-center mb-4 text-uppercase padding cyan">Lista Comisión</h1>
+          <!-- Campo de búsqueda -->
+          <div class="mb-3">
+            <input type="text" class="form-control padding rounded input-text" placeholder="Buscar...">
+          </div>
+          <div class="mb-3">
+            <button type="button" class="btn bg text-light text-uppercase p-4 rounded" data-toggle="modal" data-target="#crearClienteModal">
+              Crear Comisión
+            </button>
+          </div>
+          <!-- Tabla con bordes -->
+          <table class="table table-bordered input-text">
+            <thead class="bg">
+              <tr class="text-light text-uppercase input-text">
+                <th>Tipo Transacción</th>
+                <th>Compra</th>
+                <th>Venta</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Datos de ejemplo, reemplázalos con tus datos reales -->
+              <tr>
+                <td>Venta</td>
+                <td></td>
+                <td>123</td>
+              </tr>
+              <tr>
+                <td>Compra</td>
+                <td>1234</td>
+              </tr>
+              <!-- ... Más filas ... -->
+            </tbody>
+          </table>
+      
+          <!-- Paginador a la derecha -->
+          <ul class="pagination justify-content-end">
+            <li class="page-item disabled">
+              <span class="page-link cyan">Anterior</span>
+            </li>
+            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link cyan" href="#">Siguiente</a>
+            </li>
+          </ul>
+      
+        </div>
+      
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </main>
+    
+</body>
+</html>
