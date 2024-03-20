@@ -20,6 +20,18 @@ html {
     background-color: #0097a7;
 }
 
+.mensaje {
+    width: 94%;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: bold;
+    color:red;
+    padding: 10px 0 10px 0;
+    margin: -10px;
+    margin-left: 16px;
+}
+
 .contenedor {
     width: 130rem;
     margin: 0 auto;

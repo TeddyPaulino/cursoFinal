@@ -20,41 +20,41 @@
         </div>
     </div>
     <section class="seccion">
-        <form action="" class="formulario">
+        <form action="" class="formulario" id="formularioCliente">
             <fieldset>
                 <legend>Nuevo Cliente</legend>
                 <div class="contenedor_campo">           
                     <div class="campo">
-                        <label for="">Nombre</label>
-                        <input class="input"type="number" placeholder="Nombre">
+                        <label for="Nombre">Nombre</label>
+                        <input class="input"type="text" placeholder="Nombre" id="nombrecliente">
                     </div>
                     <div class="campo">
                         <label for="">Apellido</label>
-                        <input class="input"type="number" placeholder="Apellido">
+                        <input class="input"type="text" placeholder="Apellido" id="apellidoCliente">
                     </div>
                     <div class="campo">
                         <label for="">Dirección</label>
-                        <input class="input"type="number" placeholder="Dirección">
+                        <input class="input"type="text" placeholder="Dirección" id="direccionCliente">
                     </div>
                     <div class="campo">
                         <label for="">Telefono</label>
-                        <input class="input"type="tel" placeholder="Telefono">
+                        <input class="input"type="tel" placeholder="Telefono" id="telefonoCliente">
                     </div>
                     <div class="campo">
                         <label for="">Tipo Documento</label>
-                        <select class=" input select_moneda">
-                            <option value="">Tipo Dcumento</option>
-                            <option value="">Cedula</option>
+                        <select class=" input select_moneda" id="tipoDocumentCliente">
+                            <option selected disabled value = "">Tipo Dcumento</option>
+                            <option value="1">Cedula</option>
                             <option value="">Pasaporte</option>
                         </select>
                     </div>
                     <div class="campo">
                         <label for="">Cedula</label>
-                        <input class="input"type="number" placeholder="Cedular">
+                        <input class="input"type="number" placeholder="Cedular" id="cedulaCliente">
                     </div>   
                     <div class="campo">
                         <label for="">Email</label>
-                        <input class="input"type="number" placeholder="Correo Electronico">
+                        <input class="input"type="email" placeholder="Correo Electronico" id="emailCliente">
                     </div>
                     <div>
                         <input class="boton" type="submit" value="Registrar">
@@ -63,5 +63,7 @@
             </fieldset>
         </form>
     </section>
+
+    <script src="js/cliente.js" type="module"></script>
 </body>
 </html>
