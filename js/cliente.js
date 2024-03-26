@@ -35,6 +35,7 @@
    function LimpiarHTML() {
     while (divMensaje.firstChild) {
         divMensaje.removeChild(divMensaje.firstChild);
+        
     }
    }
 })();
