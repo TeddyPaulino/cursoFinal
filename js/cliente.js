@@ -28,7 +28,7 @@
     formularioCliente.insertBefore(divMensaje, document.querySelector('form submit'));
     setTimeout(() => {
         divMensaje.remove();
-    },6000 )
+    },9000 )
      
    }
 
