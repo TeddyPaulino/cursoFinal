@@ -4,7 +4,6 @@
 
    function agregarCliente(e) {
     e.preventDefault();
-
     const nombreInput = document.querySelector("#nombrecliente").value;
     const apellidoInput = document.querySelector("#apellidoCliente").value;
     const dirInpunt = document.querySelector('#direccionCliente').value;
@@ -14,9 +13,10 @@
     const emailInput = document.querySelector('#emailCliente').value;
 
     if (nombreInput === '' || apellidoInput === '' || dirInpunt === '' || tipoDocInput === '' || cedulaInput === '') {
+        
         mostrarMensaje();
     }else {
-
+        console.log('Todos los campos estan')
     }   
    }
 
@@ -24,8 +24,17 @@
     const divMensaje = document.createElement('div');
     divMensaje.classList.add('mensaje');
     divMensaje.textContent = 'Los siguientes campos son obligatorios, Nombre, Apellido,Dirección, Tipo Documento, Cedula...'
-
+    
     formularioCliente.insertBefore(divMensaje, document.querySelector('form submit'));
+    setTimeout(() => {
+        divMensaje.remove();
+    },5000 )
+    
+   }
 
+   function LimpiarHTML() {
+    while (divMensaje.firstChild) {
+        divMensaje.removeChild(divMensaje.firstChild);
+    }
    }
 })();
