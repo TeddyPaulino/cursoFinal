@@ -28,13 +28,14 @@
     formularioCliente.insertBefore(divMensaje, document.querySelector('form submit'));
     setTimeout(() => {
         divMensaje.remove();
-    },5000 )
-    
+    },6000 )
+     
    }
 
    function LimpiarHTML() {
     while (divMensaje.firstChild) {
         divMensaje.removeChild(divMensaje.firstChild);
+
         
     }
    }
