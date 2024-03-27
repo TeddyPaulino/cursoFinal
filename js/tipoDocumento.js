@@ -22,7 +22,6 @@
             })
             .then(response => response.json())
             .then(respuesta => {
-                console.log(respuesta.success === false)
 
                 if (respuesta.success === false) {
                     Swal.fire({
@@ -39,14 +38,8 @@
                         showConfirmButton: false,
                         timer: 5000
                     });
-                }
-                
-                    
-                
-                
-                
-            })
-            
+                }    
+            })   
         }
         
         formulario.reset();
