@@ -27,7 +27,7 @@
             <input type="text" class="form-control padding rounded input-text" placeholder="Buscar...">
           </div>
           <div class="mb-3">
-            <button type="button" class="btn bg text-light text-uppercase p-4 rounded" data-toggle="modal" data-target="#crearClienteModal">
+            <button id="miBoton" type="button" class="btn bg text-light text-uppercase p-4 rounded" data-toggle="modal" data-target="#crearClienteModal">
               Crear Tipo Moneda
             </button>
           </div>
@@ -68,5 +68,11 @@
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </main>  
+    <script>
+      document.getElementById("miBoton").addEventListener("click", function() {
+      // Código para llamar a la página tipo de moneda 
+      window.location.href = "tipoMoneda.html";
+      });
+    </script> 
 </body>
 </html>

@@ -27,7 +27,7 @@
             <input type="text" class="form-control padding rounded input-text" placeholder="Buscar...">
           </div>
           <div class="mb-3">
-            <button type="button" class="btn bg text-light text-uppercase p-4 rounded" data-toggle="modal" data-target="#crearClienteModal">
+            <button id="miBoton" type="button" class="btn bg text-light text-uppercase p-4 rounded" data-toggle="modal" data-target="#crearClienteModal">
               Crear Rol
             </button>
           </div>
@@ -67,6 +67,12 @@
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    </main>  
+    </main> 
+    <script>
+      document.getElementById("miBoton").addEventListener("click", function() {
+      // Código para llamar a la página rol de usuario
+      window.location.href = "rolUsuario.html";
+      });
+    </script> 
 </body>
 </html>
