@@ -25,36 +25,35 @@
                 <legend>Nuevo Cliente</legend>
                 <div class="contenedor_campo">           
                     <div class="campo">
-                        <label for="Nombre">Nombre</label>
-                        <input class="input"type="text" placeholder="Nombre" id="nombrecliente">
+                        <label for="nombre">Nombre</label>
+                        <input class="input"type="text" placeholder="Nombre" name="nombre" id="nombrecliente">
                     </div>
                     <div class="campo">
-                        <label for="">Apellido</label>
-                        <input class="input"type="text" placeholder="Apellido" id="apellidoCliente">
+                        <label for="apellido">Apellido</label>
+                        <input class="input"type="text" placeholder="Apellido" name="apellido" id="apellidoCliente">
                     </div>
                     <div class="campo">
-                        <label for="">Dirección</label>
-                        <input class="input"type="text" placeholder="Dirección" id="direccionCliente">
+                        <label for="direccion">Dirección</label>
+                        <input class="input"type="text" placeholder="Dirección" name="direccion" id="direccionCliente">
                     </div>
                     <div class="campo">
-                        <label for="">Telefono</label>
-                        <input class="input"type="tel" placeholder="Telefono" id="telefonoCliente">
+                        <label for="telefono">Telefono</label>
+                        <input class="input"type="tel" placeholder="Telefono" name="telefono" id="telefonoCliente">
                     </div>
                     <div class="campo">
-                        <label for="">Tipo Documento</label>
-                        <select class=" input select_moneda" id="tipoDocumentCliente">
+                        <label for="tipoDocumento">Tipo Documento</label>
+                        <select class="input select_moneda" id="tipoDocumentCliente" name="tipoDocumento">
                             <option selected disabled value = "">Tipo Dcumento</option>
-                            <option value="1">Cedula</option>
-                            <option value="">Pasaporte</option>
+                            
                         </select>
                     </div>
                     <div class="campo">
-                        <label for="">Cedula</label>
-                        <input class="input"type="number" placeholder="Cedular" id="cedulaCliente">
+                        <label for="cedula">Cedula</label>
+                        <input class="input"type="number" placeholder="Cedula" name="cedula" id="cedulaCliente">
                     </div>   
                     <div class="campo">
-                        <label for="">Email</label>
-                        <input class="input"type="email" placeholder="Correo Electronico" id="emailCliente">
+                        <label for="correo">Email</label>
+                        <input class="input"type="email" placeholder="Correo Electronico" name="correo" id="emailCliente">
                     </div>
                     <div>
                         <input class="boton" type="submit" value="Registrar">
@@ -65,5 +64,6 @@
     </section>
 
     <script src="js/cliente.js" type="module"></script>
+    <script src="js/sweetalert2.js"></script>
 </body>
 </html>

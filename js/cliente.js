@@ -1,6 +1,32 @@
 (function() {
+    document.addEventListener('DOMContentLoaded', () => {
+        llenarSelectTipoDocumento();
+     })
    formularioCliente.addEventListener('submit', agregarCliente)
     agregarCliente();
+
+     
+     // Funcion que llena el select en html
+     function llenarSelectTipoDocumento() {
+        const select = document.querySelector('#tipoDocumentCliente');
+
+        console.log(select)
+
+        // Realizar la solicitud para obtener los datos desde PHP
+        fetch('http://localhost:3000/selectTipoDatos.php')
+        .then(response => response.json())
+        .then(respuesta => {
+            // Agregar cada opción al select
+            respuesta.forEach(option => {
+            const optionElement = document.createElement('option');
+            optionElement.value = option.id;
+            optionElement.textContent = option.nombre;
+            select.appendChild(optionElement);
+        });
+        })
+        // .catch(error => console.error('Error:', error));
+    }
+
 
    function agregarCliente(e) {
     e.preventDefault();
@@ -16,10 +42,41 @@
         
         mostrarMensaje();
     }else {
-        console.log('Todos los campos estan')
-    }   
-   }
+        let data = new FormData(formularioCliente);
 
+            console.log(data)
+
+            fetch('http://localhost:3000/agregarCliente.php', {
+            
+            method: 'POST',
+            body: data
+            
+            })
+            .then(response => response.json())
+            .then(respuesta => {
+
+                if (respuesta.success === false) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: respuesta.message,
+                        
+                    });
+                } else {
+                    Swal.fire({
+                        position: "top-center",
+                        icon: "success",
+                        title: respuesta.message,
+                        showConfirmButton: false,
+                        timer: 3000
+                    });
+                }    
+            })   
+        }
+        
+        formularioCliente.reset();
+    }   
+   
    function mostrarMensaje() {
     const divMensaje = document.createElement('div');
     divMensaje.classList.add('mensaje');
