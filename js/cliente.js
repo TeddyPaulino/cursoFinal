@@ -1,7 +1,7 @@
 (function() {
     document.addEventListener('DOMContentLoaded', () => {
         llenarSelectTipoDocumento();
-     })
+     });
    formularioCliente.addEventListener('submit', agregarCliente)
     agregarCliente();
 
@@ -85,7 +85,7 @@
     formularioCliente.insertBefore(divMensaje, document.querySelector('form submit'));
     setTimeout(() => {
         divMensaje.remove();
-    },9000 )
+    },4000 )
      
    }
 
