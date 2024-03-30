@@ -214,9 +214,9 @@ function agregarUsuario() {
     $nombre = $_POST['nombre'];
     $apellido = $_POST['apellido'];
     $correo = $_POST['correo'];
-    $usuario = $_POST['selectRolUsuario'];
-    $clave = $_POST['password'];
-    $rol = $_POST['selectRol'];
+    $usuario = $_POST['nombreUsuario'];
+    $clave = $_POST['clave'];
+    $rol = $_POST['selectRolUsuario'];
 
     $sql_select = "SELECT * FROM usuario WHERE nombre_usuario = '$usuario'";
     $resultado = $db->query($sql_select);

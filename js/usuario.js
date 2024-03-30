@@ -4,7 +4,7 @@
 
      });
      const formularioUsuario = document.querySelector('#formularioUsuario');
-     formularioUsuario.addEventListener('submit', agregarUsuario)
+     formularioUsuario.addEventListener('submit', agregarUsuario);
      // Funcion que llena el select en Rol
     function llenarSelectRol() {
         const select = document.querySelector('#selectRol');
@@ -39,7 +39,37 @@
         if (nombreUsuario === '' || apellidoUsuario === '' || correoUsuario === '' || usuario === '' || claveUsuario === '' || rolUsuario === '') {
             mostrarMensaje();
         } else {
+            let data = new FormData(formularioUsuario);
 
+            console.log(data)
+
+            fetch('http://localhost:3000/agregarUsuario.php', {
+            
+            method: 'POST',
+            body: data
+            
+            })
+            .then(response => response.json())
+            .then(respuesta => {
+
+                if (respuesta.success === false) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: respuesta.message,
+                        
+                    });
+                } else {
+                    Swal.fire({
+                        position: "top-center",
+                        icon: "success",
+                        title: respuesta.message,
+                        showConfirmButton: false,
+                        timer: 3000
+                    });
+                }    
+            })   
+            formularioUsuario.reset();
         }
 
         function mostrarMensaje() {
