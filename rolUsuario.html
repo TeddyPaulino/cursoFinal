@@ -20,17 +20,17 @@
         </div>
     </div>
     <section class="seccion">
-        <form action="" class="formulario">
+        <form action="" class="formulario" id="formularioUsuario">
             <fieldset>
                 <legend>Registrar Rol</legend>
                 <div class="contenedor_campo">           
                     <div class="campo">
-                        <label for="">Nombre</label>
-                        <input class="input"type="number" placeholder="Nombre del Rol">
+                        <label for="nombreUsuario">Nombre</label>
+                        <input class="input"type="text" placeholder="Nombre del Rol" name="nombreUsuario" id="usuario">
                     </div> 
                     <div class="campo">
-                        <label for="">Descripción</label>
-                        <input class="input"type="number" placeholder="Descripción del Rol">
+                        <label for="descripcion">Descripción</label>
+                        <input class="input"type="text" placeholder="Descripción del Rol" name="descripcion" id="descripcion">
                     </div> 
                     <div>
                         <input class="boton" type="submit" value="Registrar">
@@ -39,5 +39,7 @@
             </fieldset>
         </form>
     </section>
+    <script src="js/rolUsuario.js" type="module"></script>
+    <script src="js/sweetalert2.js"></script>
 </body>
 </html>

@@ -20,17 +20,17 @@
         </div>
     </div>
     <section class="seccion">
-        <form action="" class="formulario">
+        <form action="" class="formulario" id="formularioMoneda">
             <fieldset>
                 <legend>Registrar Moneda</legend>
                 <div class="contenedor_campo">           
                     <div class="campo">
-                        <label for="">Nombre</label>
-                        <input class="input"type="number" placeholder="Nombre de la Moneda">
+                        <label for="nombreMoneda">Nombre</label>
+                        <input class="input"type="text" name="nombreMoneda"   id="nombreMoneda"placeholder="Nombre de la Moneda">
                     </div> 
                     <div class="campo">
-                        <label for="">Codigo Moneda</label>
-                        <input class="input"type="text" placeholder="Codigo de la Moneda ej: DOM">
+                        <label for="codigoMoneda">Codigo Moneda</label>
+                        <input class="input"type="text" name="codigoMoneda" id="codigoMoneda" placeholder="Codigo de la Moneda ej: DOM">
                     </div> 
                     <div>
                         <input class="boton" type="submit" value="Registrar">
@@ -39,5 +39,7 @@
             </fieldset>
         </form>
     </section>
+    <script src="js/tipoMomenda.js" type="module"></script>
+    <script src="js/sweetalert2.js"></script>
 </body>
 </html>
