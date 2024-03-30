@@ -20,17 +20,24 @@
         </div>
     </div>
     <section class="seccion">
-        <form action="" class="formulario">
+        <form action="" class="formulario" id="formularioTipoTransaccion">
             <fieldset>
                 <legend>Registrar Transacción</legend>
                 <div class="contenedor_campo">           
                     <div class="campo">
-                        <label for="">Transacción</label>
-                        <input class="input"type="text" placeholder="Transacción">
+                        <label for="tipoTransacción">Transacción</label>
+                        <input class="input"type="text" 
+                        placeholder="Transacción"
+                        name="tipoTransaccion"
+                        id="tipoTransaccion"
+                    >
                     </div>
                     <div class="campo">
-                        <label for="">Descripción</label>
-                        <input class="input"type="number" placeholder="Descripción de la transacción">
+                        <label for="descripcion">Descripción</label>
+                        <input class="input"type="text" placeholder="Descripción de la transacción"
+                        name="descripcion"
+                        id="descripcionTipoTransaccion"
+                    >
                     </div> 
                     <div>
                         <input class="boton" type="submit" value="Registrar">
@@ -39,5 +46,7 @@
             </fieldset>
         </form>
     </section>
+    <script src="js/tipoTransaccion.js" type="module"></script>
+    <script src="js/sweetalert2.js"></script>
 </body>
 </html>

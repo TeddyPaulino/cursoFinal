@@ -248,7 +248,71 @@ function agregarUsuario() {
     echo json_encode($respuesta);
     // Cerrar la conexion
     mysqli_close($db);
-
-
 }
+
+// Funcion de agregar tipo documento
+function agregarTipoTransaccion() {
+    require 'conexion.php';
+    $tipoTransaccion = $_POST['tipoTransaccion'];
+    $descripcion = $_POST['descripcion'];
+
+    // Consultar si el registro existe
+    $sql_select = "SELECT * FROM tipo_transaccion  WHERE nombre = '$tipoTransaccion'";
+    $resultado = $db->query($sql_select);
+
+    if ($resultado->num_rows > 0) {
+        $respuesta = array(
+            "success" => false,
+            "message" => "El registro ya existe."
+        );
+    } else {
+        // Insertar datos a la base de datos
+        $sql = "INSERT INTO tipo_transaccion(nombre, descripcion)
+                VALUES ('$tipoTransaccion', '$descripcion')";
+
+        if (mysqli_query($db, $sql)) {
+            $respuesta = array(
+                "success" => true,
+                "message" => "Registro insertado correctamente."
+            );
+        } else {
+            $respuesta = array(
+                "success" => false,
+                "message" => "Error al insertar datos: " . $$db->error
+            );
+        }
+    }
+    // Convertir mensaje en Json
+    header('Content-Type: application/json');
+    echo json_encode($respuesta);
+    // Cerrar la conexion
+    mysqli_close($db);
+}
+
+// Funcion que llena el Select Rol 
+function selectTipoMoneda() {
+    require 'conexion.php';
+    // Consulta SQL para obtener datos
+     $sql = "SELECT id, nombre FROM tipo_moneda ";
+     $resultado = $db->query($sql);
+ 
+     // Comprobar si hay resultados y construir un array
+     $options = array();
+     if ($resultado->num_rows > 0) {
+         while($row = $resultado->fetch_assoc()) {
+             $options[] = $row;
+         }
+     }
+ 
+     // Devolver los datos como JSON
+     header('Content-Type: application/json');
+     echo json_encode($options);
+ 
+     // Cerrar conexión
+     $db->close();
+ }
+
+
+
+
  

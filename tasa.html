@@ -20,25 +20,33 @@
         </div>
     </div>
     <section class="seccion">
-        <form action="" class="formulario">
+        <form action="" class="formulario" id="formularioTasa">
             <fieldset>
                 <legend>Registrar Tasa</legend>
                 <div class="contenedor_campo">           
                     <div class="campo">
-                        <label for="">Moneda</label>
-                        <select class=" input select_moneda">
+                        <label for="selectTasa">Moneda</label>
+                        <select class=" input select_moneda"
+                            name="selectTasa"
+                            id="selectTasa"
+                        >
                             <option value="">Tipo Moneda</option>
-                            <option value="">Dolares</option>
-                            <option value="">Euros</option>
                         </select>
                     </div>
                     <div class="campo">
-                        <label for="">Compra</label>
-                        <input class="input"type="number" placeholder="Compra">
+                        <label for="tasaCompra">Compra</label>
+                        <input class="input"type="number" placeholder="Compra"
+                        name="tasaCompra" 
+                        id="tasaCompra"   
+                    >
                     </div>
                     <div class="campo">
-                        <label for="">Venta</label>
-                        <input class="input"type="number" placeholder="Venta">
+                        <label for="tasaVenta">Venta</label>
+                        <input class="input"type="number" 
+                        placeholder="Venta"
+                        name="tasaVenta"
+                        id="tasaVenta"
+                    >
                     </div>
                     <div>
                         <input class="boton" type="submit" value="Registrar">
@@ -47,5 +55,7 @@
             </fieldset>
         </form>
     </section>
+    <script src="js/tasa.js" type="module"></script>
+    <script src="js/sweetalert2.js"></script>
 </body>
 </html>
