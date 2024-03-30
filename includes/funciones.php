@@ -212,7 +212,7 @@ function agregarUsuario() {
     require 'conexion.php';
 
     $nombre = $_POST['nombre'];
-    $apellido = $_POST['apellido'];
+    $apellidoUsuario = $_POST['apellido'];
     $correo = $_POST['correo'];
     $usuario = $_POST['nombreUsuario'];
     $clave = $_POST['clave'];
@@ -228,8 +228,8 @@ function agregarUsuario() {
         );
     } else {
         // Insertar datos a la base de datos
-        $sql = "INSERT INTO rol(nombre, apellido, correo, nombre_usuario, clave, rol_id)
-                VALUES ('$nombre', '$apellido', '$correo', '$usuario', '$clave', '$rol')";
+        $sql = "INSERT INTO usuario(nombre, apellido, correo, nombre_usuario, clave, rol_id)
+                VALUES ('$nombre', '$apellidoUsuario', '$correo', '$usuario', '$clave', '$rol')";
 
         if (mysqli_query($db, $sql)) {
             $respuesta = array(
