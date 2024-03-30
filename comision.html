@@ -20,29 +20,34 @@
         </div>
     </div>
     <section class="seccion">
-        <form action="" class="formulario">
+        <form action="" class="formulario" id="formularioComision">
             <fieldset>
                 <legend>Comision</legend>
                 <div class="contenedor_campo">           
                     <div class="campo">
-                        <label for="">Moneda</label>
-                        <select class=" input select_moneda">
+                        <label for="tipoMoneda">Moneda</label>
+                        <select class=" input select_moneda"
+                            name="tipoMoneda"
+                            id="tipoMoneda"
+                        >
                             <option value="">Tipo Moneda</option>
-                            <option value="">Dolares</option>
-                            <option value="">Euros</option>
                         </select>
                     </div>
                     <div class="campo">
-                        <label for="">Transacción</label>
-                        <select class=" input select_moneda">
+                        <label for="tipoTransaccion">Transacción</label>
+                        <select class=" input select_moneda"
+                            name="tipoTransaccion"
+                            id="tipoTransaccion"
+                        >
                             <option value="">Tipo Transacción</option>
-                            <option value="">Compra</option>
-                            <option value="">Venta</option>
                         </select>
                     </div>
                     <div class="campo">
-                        <label for="">Comision</label>
-                        <input class="input"type="number" placeholder="Comision">
+                        <label for="comision">Comision</label>
+                        <input class="input"type="text"                               placeholder="Comision"
+                        name="comision"
+                        id="comision"
+                        >
                     </div>
                     <div>
                         <input class="boton" type="submit" value="Registrar">
@@ -51,5 +56,7 @@
             </fieldset>
         </form>
     </section>
+    <script src="js/comision.js" type="module"></script>
+    <script src="js/sweetalert2.js"></script>
 </body>
 </html>

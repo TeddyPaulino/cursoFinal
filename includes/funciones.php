@@ -312,6 +312,127 @@ function selectTipoMoneda() {
      $db->close();
  }
 
+ function agregarTasa() {
+    require 'conexion.php';
+    $selectTasa = $_POST['selectTasa'];
+    $tasaCompra = $_POST['tasaCompra'];
+    $tasaVenta = $_POST['tasaVenta'];
+
+    // Insertar datos a la base de datos
+    $sql = "INSERT INTO tasa_cambio(tipo_moneda_id , tasa_venta, tasa_compro)
+    VALUES ('$selectTasa', '$tasaCompra', '$tasaVenta')";
+
+    if (mysqli_query($db, $sql)) {
+    $respuesta = array(
+        "success" => true,
+        "message" => "Registro insertado correctamente."
+    );
+    } else {
+        $respuesta = array(
+            "success" => false,
+            "message" => "Error al insertar datos: " . $$db->error
+        );
+    }
+    
+    // Convertir mensaje en Json
+    header('Content-Type: application/json');
+    echo json_encode($respuesta);
+    // Cerrar la conexion
+    mysqli_close($db);
+}
+
+// Funcion que llena el Select 
+function selectTipoTransaccion() {
+    require 'conexion.php';
+    // Consulta SQL para obtener datos
+     $sql = "SELECT id, nombre FROM tipo_transaccion";
+     $resultado = $db->query($sql);
+ 
+     // Comprobar si hay resultados y construir un array
+     $options = array();
+     if ($resultado->num_rows > 0) {
+         while($row = $resultado->fetch_assoc()) {
+             $options[] = $row;
+         }
+     }
+ 
+     // Devolver los datos como JSON
+     header('Content-Type: application/json');
+     echo json_encode($options);
+ 
+     // Cerrar conexión
+     $db->close();
+ }
+
+ function agregarComision() {
+    require 'conexion.php';
+    $tipoMoneda = $_POST['tipoMoneda'];
+    $tipoTransaccion = $_POST['tipoTransaccion'];
+    $comision = $_POST['comision'];
+
+    // Insertar datos a la base de datos
+    $sql = "INSERT INTO comision(tipo_transaccion_id , tipo_moneda_id, comision)
+    VALUES ('$tipoMoneda', '$tipoTransaccion', '$comision')";
+
+    if (mysqli_query($db, $sql)) {
+    $respuesta = array(
+        "success" => true,
+        "message" => "Registro insertado correctamente."
+    );
+    } else {
+        $respuesta = array(
+            "success" => false,
+            "message" => "Error al insertar datos: " . $$db->error
+        );
+    }
+    
+    // Convertir mensaje en Json
+    header('Content-Type: application/json');
+    echo json_encode($respuesta);
+    // Cerrar la conexion
+    mysqli_close($db);
+}
+
+function agregarEstado() {
+    require 'conexion.php';
+
+    $nombre = $_POST['nombre'];
+    $descripcion = $_POST['descripcion'];
+
+    $sql_select = "SELECT * FROM estado WHERE nombre = '$nombre'";
+    $resultado = $db->query($sql_select);
+
+    if ($resultado->num_rows > 0) {
+        $respuesta = array(
+            "success" => false,
+            "message" => "El registro ya existe."
+        );
+    } else {
+        // Insertar datos a la base de datos
+        $sql = "INSERT INTO estado(nombre, descripcion)
+                VALUES ('$nombre', '$descripcion')";
+
+        if (mysqli_query($db, $sql)) {
+            $respuesta = array(
+                "success" => true,
+                "message" => "Estado insertado correctamente."
+            );
+        } else {
+            $respuesta = array(
+                "success" => false,
+                "message" => "Error al insertar datos: " . $db->error
+            ); 
+        }
+    }
+    // Convertir mensaje en Json
+    header('Content-Type: application/json');
+    echo json_encode($respuesta);
+    // Cerrar la conexion
+    mysqli_close($db);
+
+}
+
+
 
 
 
