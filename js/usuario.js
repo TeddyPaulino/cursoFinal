@@ -30,11 +30,13 @@
         e.preventDefault();
         
         const nombreUsuario = document.querySelector('#nombre').value;
-        const apellidoUsuario = document.querySelector('#apellidoUsuario').value;
+        const apellidoUsuario = document.querySelector('#apellido').value;
         const correoUsuario = document.querySelector('#correoUsuario').value;
         const usuario = document.querySelector('#usuario').value;
         const claveUsuario = document.querySelector('#passwordUsuario').value;
         const rolUsuario = document.querySelector('#selectRol').value;
+
+        console.log(apellidoUsuario);
 
         if (nombreUsuario === '' || apellidoUsuario === '' || correoUsuario === '' || usuario === '' || claveUsuario === '' || rolUsuario === '') {
             mostrarMensaje();
