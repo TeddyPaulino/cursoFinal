@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login  </title>
+   <link rel="stylesheet" href="css/login.css"><link> 
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+  <div class="wrapper">
+      <span class="bg-animate"></span>
+      <span class="bg-animate2"></span>
+
+      <div class="form-box login">
+          <h2>Login</h2>
+         <form action="#">
+            <div class="input-box">
+                <input type="text" required>
+                <label> Username</label>
+                <i class='bx bxs-user'></i>
+             </div>
+             <div class="input-box">
+                <input type="Password" required>
+                <label> Password</label>
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+           <button id="miBoton" type="submit" class="btn" value="">Login
+           </button>
+         </form>
+      </div>
+        <div class="info-text login">
+          <h2>Express Exchanger</h2>
+          <P>Lorem ipsum, dolor sit amet consectetur adipisicing.</P>
+      </div>
+   </div>
+   <script>
+    document.getElementById("miBoton").addEventListener("click", function() {
+    // Código para llamar a la página
+    window.location.href = "menu.html";
+    });
+  </script>
+</body>
+</html>
