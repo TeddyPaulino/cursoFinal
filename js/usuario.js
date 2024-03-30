@@ -31,6 +31,28 @@
         
         const nombreUsuario = document.querySelector('#nombre').value;
         const apellidoUsuario = document.querySelector('#apellidoUsuario').value;
+        const correoUsuario = document.querySelector('#correoUsuario').value;
+        const usuario = document.querySelector('#usuario').value;
+        const claveUsuario = document.querySelector('#passwordUsuario').value;
+        const rolUsuario = document.querySelector('#selectRol').value;
+
+        if (nombreUsuario === '' || apellidoUsuario === '' || correoUsuario === '' || usuario === '' || claveUsuario === '' || rolUsuario === '') {
+            mostrarMensaje();
+        } else {
+
+        }
+
+        function mostrarMensaje() {
+            const divMensaje = document.createElement('div');
+            divMensaje.classList.add('mensaje');
+            divMensaje.textContent = 'Todos los campos son obligatorios';
+
+            formularioUsuario.insertBefore(divMensaje, document.querySelector('form submit'));
+            
+            setTimeout(() => {
+                divMensaje.remove();
+            },4000 )
+        }
         
     }
 })();
