@@ -432,6 +432,27 @@ function agregarEstado() {
 
 }
 
+function mostrarCliente() {
+    require 'conexion.php';
+
+    $query = "SELECT * FROM cliente";
+    $resultado = $db->query($query);
+
+    // Preparar un array para almacenar los resultados
+    $rows = array();
+    while ($fila = $resultado->fetch_assoc()) {
+        $rows[] = $fila;
+    }
+
+    // Convertir el array a formato JSON y enviarlo
+    header('Content-Type: application/json');
+    echo json_encode($rows);
+
+    // Cerrar la conexión
+    $db->close();
+}
+?>
+
 
 
 

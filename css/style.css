@@ -269,3 +269,15 @@ nav ul  li a span{
 nav ul li a:hover span{
     transform: translateY(-50%) rotate(-180deg);
 }
+
+.editar { 
+    font-size: 2rem;
+    text-align: center;
+    color: #0097a7;
+}
+
+.eliminar {
+    font-size: 2rem;
+    text-align: center;
+    color: red;
+}

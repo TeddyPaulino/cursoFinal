@@ -36,6 +36,7 @@
           <table class="table table-bordered input-text">
             <thead class="bg">
               <tr class="text-light text-uppercase input-text">
+                <th>Id</th>
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>Dirección</th>
@@ -43,28 +44,13 @@
                 <th>Tipo Documento</th>
                 <th>Cédula</th>
                 <th>Correo</th>
+                <th>Fecha</th>
+                <th>Acción</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody id="listaCliente">
               <!-- Datos de ejemplo, reemplázalos con tus datos reales -->
-              <tr>
-                <td>John</td>
-                <td>Doe</td>
-                <td>Calle Principal 123</td>
-                <td>123-456-7890</td>
-                <td>DNI</td>
-                <td>12345678</td>
-                <td>john.doe@example.com</td>
-              </tr>
-              <tr>
-                <td>Jane</td>
-                <td>Smith</td>
-                <td>Avenida Secundaria 456</td>
-                <td>987-654-3210</td>
-                <td>Pasaporte</td>
-                <td>87654321</td>
-                <td>jane.smith@example.com</td>
-              </tr>
+              
               <!-- ... Más filas ... -->
             </tbody>
           </table>
@@ -95,7 +81,9 @@
           // Código para llamar a la página
           window.location.href = "cliente.html";
       });
+    
   </script>
+  <script src="js/mostrarCliente.js" type="module"></script>
     
 </body>
 </html>

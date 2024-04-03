@@ -68,13 +68,18 @@
                         icon: "success",
                         title: respuesta.message,
                         showConfirmButton: false,
-                        timer: 3000
+                        timer: 5000,
+
                     });
                 }    
             })   
         }
         
         formularioCliente.reset();
+        setTimeout(() => {
+            window.location.href = 'listaCliente.html';
+        },5000)
+        
     }   
    
    function mostrarMensaje() {
