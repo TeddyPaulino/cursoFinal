@@ -34,21 +34,16 @@
           <table class="table table-bordered input-text">
             <thead class="bg">
               <tr class="text-light text-uppercase input-text">
+                <th>Id</th>
                 <th>Tipo Transacción</th>
-                <th>Compra</th>
-                <th>Venta</th>
+                <th>Tasa_Venta</th>
+                <th>Tasa_Compra</th>
+                <th>Fecha</th>
+                <th>Acción</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>Venta</td>
-                <td></td>
-                <td>123</td>
-              </tr>
-              <tr>
-                <td>Compra</td>
-                <td>1234</td>
-              </tr>
+            <tbody id="listaTasaCambio">
+            
             </tbody>
           </table>
       
@@ -77,6 +72,7 @@
       window.location.href = "tasa.html";
       });
     </script> 
+    <script src="js/listarTasaCambio.js"></script>
     
 </body>
 </html>

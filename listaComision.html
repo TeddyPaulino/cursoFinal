@@ -35,22 +35,16 @@
           <table class="table table-bordered input-text">
             <thead class="bg">
               <tr class="text-light text-uppercase input-text">
+                <th>Id</th>
                 <th>Tipo Transacción</th>
-                <th>Compra</th>
-                <th>Venta</th>
+                <th>Tipo Moneda</th>
+                <th>Comision</th>
+                <th>Fecha</th>
+                <th>Acción</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody id="listaComision">
               <!-- Datos de ejemplo, reemplázalos con tus datos reales -->
-              <tr>
-                <td>Venta</td>
-                <td></td>
-                <td>123</td>
-              </tr>
-              <tr>
-                <td>Compra</td>
-                <td>1234</td>
-              </tr>
               <!-- ... Más filas ... -->
             </tbody>
           </table>
@@ -80,7 +74,9 @@
     document.getElementById("miBoton").addEventListener("click", function() {
     // Código para llamar a la página
     window.location.href = "comision.html";
+
     });
   </script>  
+  <script src="js/listarComision.js" type="module"></script>
 </body>
 </html>

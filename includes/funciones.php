@@ -451,10 +451,108 @@ function mostrarCliente() {
     // Cerrar la conexión
     $db->close();
 }
+
+function listarComision() {
+    require 'conexion.php';
+
+    $query = "SELECT * FROM comision";
+    $resultado = $db->query($query);
+
+    // Preparar un array para almacenar los resultados
+    $rows = array();
+    while ($fila = $resultado->fetch_assoc()) {
+        $rows[] = $fila;
+    }
+
+    // Convertir el array a formato JSON y enviarlo
+    header('Content-Type: application/json');
+    echo json_encode($rows);
+
+    // Cerrar la conexión
+    $db->close();
+}
+
+function listarEstado() {
+    require 'conexion.php';
+
+    $query = "SELECT * FROM estado";
+    $resultado = $db->query($query);
+
+    // Preparar un array para almacenar los resultados
+    $rows = array();
+    while ($fila = $resultado->fetch_assoc()) {
+        $rows[] = $fila;
+    }
+
+    // Convertir el array a formato JSON y enviarlo
+    header('Content-Type: application/json');
+    echo json_encode($rows);
+
+    // Cerrar la conexión
+    $db->close();
+
+}
+
+function listarRol() {
+    require 'conexion.php';
+
+    $query = "SELECT * FROM rol";
+    $resultado = $db->query($query);
+
+    // Preparar un array para almacenar los resultados
+    $rows = array();
+    while ($fila = $resultado->fetch_assoc()) {
+        $rows[] = $fila;
+    }
+
+    // Convertir el array a formato JSON y enviarlo
+    header('Content-Type: application/json');
+    echo json_encode($rows);
+
+    // Cerrar la conexión
+    $db->close();
+}
+
+function listarTasaCambio() {
+    require 'conexion.php';
+
+    $query = "SELECT * FROM tasa_cambio";
+    $resultado = $db->query($query);
+
+    // Preparar un array para almacenar los resultados
+    $rows = array();
+    while ($fila = $resultado->fetch_assoc()) {
+        $rows[] = $fila;
+    }
+
+    // Convertir el array a formato JSON y enviarlo
+    header('Content-Type: application/json');
+    echo json_encode($rows);
+
+    // Cerrar la conexión
+    $db->close();
+}
+
+function listarDocumento() {
+    require 'conexion.php';
+
+    $query = "SELECT * FROM tipo_documento";
+    $resultado = $db->query($query);
+
+    // Preparar un array para almacenar los resultados
+    $rows = array();
+    while ($fila = $resultado->fetch_assoc()) {
+        $rows[] = $fila;
+    }
+
+    // Convertir el array a formato JSON y enviarlo
+    header('Content-Type: application/json');
+    echo json_encode($rows);
+
+    // Cerrar la conexión
+    $db->close();
+}
 ?>
 
 
 
-
-
- 

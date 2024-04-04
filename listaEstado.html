@@ -35,16 +35,15 @@
           <table class="table table-bordered input-text">
             <thead class="bg">
               <tr class="text-light text-uppercase input-text">
-                <th>Nombre</th>
+                <th>Id</th>
+                <th>Estado</th>
                 <th>Descripción</th>
+                <th>Fecha</th>
+                <th>Acción</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody id="listaEstado">
               <!-- Datos de ejemplo, reemplázalos con tus datos reales -->
-              <tr>
-                <td>Activo</td>
-                <td>Activo para trabajar en el sistema</td>
-              </tr>
               <!-- ... Más filas ... -->
             </tbody>
           </table>
@@ -75,5 +74,6 @@
     window.location.href = "estado.html";
     });
   </script>
+  <script src="js/listarEstado.js" type="module"></script>
 </body>
 </html>
