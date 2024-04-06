@@ -10,26 +10,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/fontawesome/css/all.css">
     <link rel="stylesheet" href="css/style.css">
-    <title>Lista Tipo Moneda</title>  
+    <title>Apertura</title>  
 </head>
 <body>
     <div class="bg">
         <div class="logo_user contenedor">
             <h1 class="nombre_logo">ExpressExchanger</h1>    
             <h2 class="nombre_usuario">Usuario</h2>
-            
             <i class="fa-regular fa-user icono"></i>     
         </div>
     </div>
     <main class="contenedor">
-        <h1 class="text-center mb-4 text-uppercase padding cyan">Listado De Moneda</h1>
+        <h1 class="text-center mb-4 text-uppercase padding cyan">Lista Apertura</h1>
           <!-- Campo de búsqueda -->
           <div class="mb-3">
             <input type="text" class="form-control padding rounded input-text" placeholder="Buscar...">
           </div>
           <div class="mb-3">
             <button id="miBoton" type="button" class="btn bg text-light text-uppercase p-4 rounded" data-toggle="modal" data-target="#crearClienteModal">
-              Crear Tipo Moneda
+              Crear Apertura
             </button>
           </div>
           <!-- Tabla con bordes -->
@@ -37,16 +36,14 @@
             <thead class="bg">
               <tr class="text-light text-uppercase input-text">
                 <th>Id</th>
-                <th>Meneda</th>
-                <th>Codigo</th>
+                <th>Tipo Moneda</th>
+                <th>Monto</th>
                 <th>Fecha</th>
                 <th>Acción</th>
-
               </tr>
             </thead>
-            <tbody id="listaMoneda">
+            <tbody id="listaApertura">
               <!-- Datos de ejemplo, reemplázalos con tus datos reales -->
-        
               <!-- ... Más filas ... -->
             </tbody>
           </table>
@@ -69,13 +66,14 @@
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    </main>  
-    <script>
-      document.getElementById("miBoton").addEventListener("click", function() {
-      // Código para llamar a la página tipo de moneda 
-      window.location.href = "tipoMoneda.html";
-      });
-    </script> 
-    <script src="js/listarTipoMoneda.js" type="module"></script>
+    </main>
+         <!--script para el botn de venta y compra -->
+  <script>
+    document.getElementById("miBoton").addEventListener("click", function() {
+    // Código para llamar a la página estado
+    window.location.href = "aperturaCaja.html";
+    });
+  </script>
+  <script src=" " type="module"></script>
 </body>
 </html>

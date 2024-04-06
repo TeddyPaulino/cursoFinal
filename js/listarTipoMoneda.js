@@ -1,33 +1,32 @@
 (function() {
     document.addEventListener('DOMContentLoaded', () => {
-        listarTasa();
+        listarMoneda();
     })
     
-    const listaTasa = document.querySelector('#listaTasaCambio');
+    const listaMoneda = document.querySelector('#listaMoneda');
     // listaComision.addEventListener('click', confirmarComision);
-    function listarTasa() {
+    function listarMoneda() {
         // Hace una petición fetch para obtener los datos de PHP
-     fetch('http://localhost:3000/listarTasaCambio.php')
+     fetch('http://localhost:3000/listarMoneda.php')
      .then(response => response.json())
      .then(resultado => {
 
         console.log(resultado)
         
          resultado.forEach(row => {
-            const {id, tipo_moneda_id , tipo_transaccion_id ,tasa_dia, fecha} = row
+            const {id, nombre, codigo_moneda, fecha} = row
              const tr = document.createElement('tr');
              tr.innerHTML = `
                  <td>${id}</td>
-                 <td>${tipo_moneda_id}</td>
-                 <td>${tipo_transaccion_id}</td>
-                 <td>${tasa_dia}</td>
+                 <td>${nombre}</td>
+                 <td>${codigo_moneda}</td>
                  <td>${fecha}</td>
                  <td>
                     <a href="#"><i class="fa-solid fa-pen-to-square editar"></i></a>
                      <a href="#"><i class="fa-solid fa-trash-can-arrow-up eliminar"></i></a>
                  </td>
              `;
-             listaTasa.appendChild(tr);
+             listaMoneda.appendChild(tr);
          });
      })
     //  .catch(error => console.error('Error:', error));

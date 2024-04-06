@@ -270,6 +270,10 @@ nav ul li a:hover span{
     transform: translateY(-50%) rotate(-180deg);
 }
 
+.background {
+    display: flex;
+    background-image: url('../img/moneda-dolar-concepto-cambio-moneda-flecha_68708-1989.avif');
+}
 .editar { 
     font-size: 2rem;
     text-align: center;

@@ -314,13 +314,13 @@ function selectTipoMoneda() {
 
  function agregarTasa() {
     require 'conexion.php';
+    $selectTransaccion = $_POST['selectTransaccion'];
     $selectTasa = $_POST['selectTasa'];
-    $tasaCompra = $_POST['tasaCompra'];
-    $tasaVenta = $_POST['tasaVenta'];
+    $tasaDia = $_POST['tasaDia'];
 
     // Insertar datos a la base de datos
-    $sql = "INSERT INTO tasa_cambio(tipo_moneda_id , tasa_venta, tasa_compro)
-    VALUES ('$selectTasa', '$tasaCompra', '$tasaVenta')";
+    $sql = "INSERT INTO tasa_cambio(tipo_moneda_id , tasa_dia, tipo_transaccion_id)
+    VALUES ('$selectTasa', '$tasaDia', '$selectTransaccion')";
 
     if (mysqli_query($db, $sql)) {
     $respuesta = array(
@@ -537,6 +537,66 @@ function listarDocumento() {
     require 'conexion.php';
 
     $query = "SELECT * FROM tipo_documento";
+    $resultado = $db->query($query);
+
+    // Preparar un array para almacenar los resultados
+    $rows = array();
+    while ($fila = $resultado->fetch_assoc()) {
+        $rows[] = $fila;
+    }
+
+    // Convertir el array a formato JSON y enviarlo
+    header('Content-Type: application/json');
+    echo json_encode($rows);
+
+    // Cerrar la conexión
+    $db->close();
+}
+
+function listarUsuario() {
+    require 'conexion.php';
+
+    $query = "SELECT * FROM usuario";
+    $resultado = $db->query($query);
+
+    // Preparar un array para almacenar los resultados
+    $rows = array();
+    while ($fila = $resultado->fetch_assoc()) {
+        $rows[] = $fila;
+    }
+
+    // Convertir el array a formato JSON y enviarlo
+    header('Content-Type: application/json');
+    echo json_encode($rows);
+
+    // Cerrar la conexión
+    $db->close();
+}
+
+function listarTipoMoneda() {
+    require 'conexion.php';
+
+    $query = "SELECT * FROM tipo_moneda";
+    $resultado = $db->query($query);
+
+    // Preparar un array para almacenar los resultados
+    $rows = array();
+    while ($fila = $resultado->fetch_assoc()) {
+        $rows[] = $fila;
+    }
+
+    // Convertir el array a formato JSON y enviarlo
+    header('Content-Type: application/json');
+    echo json_encode($rows);
+
+    // Cerrar la conexión
+    $db->close();
+}
+
+function listarTipoTransaccion() {  
+    require 'conexion.php';
+
+    $query = "SELECT * FROM tipo_transaccion";
     $resultado = $db->query($query);
 
     // Preparar un array para almacenar los resultados

@@ -10,6 +10,8 @@
         const nombreRol = document.querySelector('#usuario').value;
         const descripcion = document.querySelector('#descripcion').value;
 
+        
+
         if (nombreRol === '' || descripcion === '') {
             mostrarMensaje();
         }else {
@@ -46,6 +48,7 @@
         }
         
         formularioRol.reset();
+        
     }
     
     function mostrarMensaje() {

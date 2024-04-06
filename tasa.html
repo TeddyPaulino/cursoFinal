@@ -15,7 +15,7 @@
     <div class="bg">
         <div class="logo_user contenedor">
             <h1 class="nombre_logo">ExpressExchanger</h1>    
-            <h2 class="nombre_usuario">Teddy Paulino</h2>
+            <h2 class="nombre_usuario">Usuario</h2>
             <i class="fa-regular fa-user icono"></i>     
         </div>
     </div>
@@ -23,9 +23,18 @@
         <form action="" class="formulario" id="formularioTasa">
             <fieldset>
                 <legend>Registrar Tasa</legend>
-                <div class="contenedor_campo">           
+                <div class="contenedor_campo"> 
                     <div class="campo">
-                        <label for="selectTasa">Moneda</label>
+                        <label for="selectTransaccion">Tipo Transacción</label>
+                        <select class=" input select_moneda"
+                            name="selectTransaccion"
+                            id="selectTransaccion"
+                        >
+                            <option value="">Tipo Transacción</option>
+                        </select>
+                    </div>          
+                    <div class="campo">
+                        <label for="selectTasa">Tipo Moneda</label>
                         <select class=" input select_moneda"
                             name="selectTasa"
                             id="selectTasa"
@@ -34,18 +43,10 @@
                         </select>
                     </div>
                     <div class="campo">
-                        <label for="tasaCompra">Compra</label>
-                        <input class="input"type="text" placeholder="Compra"
-                        name="tasaCompra" 
-                        id="tasaCompra"   
-                    >
-                    </div>
-                    <div class="campo">
-                        <label for="tasaVenta">Venta</label>
-                        <input class="input"type="text" 
-                        placeholder="Venta"
-                        name="tasaVenta"
-                        id="tasaVenta"
+                        <label for="tasaDia">Tasa</label>
+                        <input class="input"type="text" placeholder="Tasa del dia"
+                        name="tasaDia" 
+                        id="tasaDia"   
                     >
                     </div>
                     <div>
