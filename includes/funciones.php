@@ -372,7 +372,7 @@ function selectTipoTransaccion() {
 
     // Insertar datos a la base de datos
     $sql = "INSERT INTO comision(tipo_transaccion_id , tipo_moneda_id, comision)
-    VALUES ('$tipoMoneda', '$tipoTransaccion', '$comision')";
+    VALUES ('$tipoTransaccion', '$tipoMoneda', '$comision')";
 
     if (mysqli_query($db, $sql)) {
     $respuesta = array(
@@ -612,6 +612,90 @@ function listarTipoTransaccion() {
     // Cerrar la conexión
     $db->close();
 }
+
+function obtenerUltimaTasa() {
+    require 'conexion.php';
+
+    // Obtener los parámetros desde la solicitud
+    $tipoTransaccion = $_GET['tipoTransaccion'];
+    $tipoMoneda = $_GET['tipoMoneda'];
+
+    // Consulta para obtener la última tasa de cambio según el tipo de transacción y tipo de moneda
+    $sql = "SELECT tasa_dia FROM tasa_cambio WHERE tipo_moneda_id='$tipoMoneda' AND tipo_transaccion_id='$tipoTransaccion' ORDER BY fecha DESC LIMIT 1";
+    $resultado = $db->query($sql);
+
+    
+if ($resultado->num_rows > 0) {
+    // Devolver la tasa como JSON
+    $row = $resultado->fetch_assoc();
+    header('Content-Type: application/json');
+    echo json_encode($row);
+} 
+   
+    
+    $db->close();
+    }
+
+
+    function obtenerComision() {
+        require 'conexion.php';
+    
+        // Obtener los parámetros desde la solicitud
+        $tipoTransaccion = $_GET['tipoTransaccion'];
+        $tipoMoneda = $_GET['tipoMoneda'];
+    
+        // Consulta para obtener la última tasa de cambio según el tipo de transacción y tipo de moneda
+        $sql = "SELECT comision_dia FROM comision 
+        WHERE tipo_transaccion_id = '$tipoTransaccion' AND tipo_moneda_id ='$tipoMoneda' ORDER BY fecha DESC LIMIT 1";
+        $resultado = $db->query($sql);
+    
+        
+    if ($resultado->num_rows > 0) {
+        // Devolver la tasa como JSON
+        $row = $resultado->fetch_assoc();
+        header('Content-Type: application/json');
+        echo json_encode($row);
+    } 
+       
+        
+        $db->close();
+    }
+
+    function obtenerNombreApellido() {
+        require 'conexion.php';
+        $documento = $_GET['numeroDocumento'];
+         // Consultar si el registro existe
+        $sql_select = "SELECT * FROM cliente WHERE documento = '$documento'";
+        $resultado = $db->query($sql_select);
+
+        if ($resultado->num_rows > 0) {
+
+        // Consulta para obtener el nombre y apellido del cliente por el número de documento
+        $sql = "SELECT UPPER(CONCAT(nombre, ' ', apellido)) AS nombre_apellido FROM cliente WHERE documento='$documento'";
+        $resultado = $db->query($sql);
+ 
+            // Devolver el nombre y apellido combinados en mayúsculas como JSON
+            $row = $resultado->fetch_assoc();
+            header('Content-Type: application/json');
+            echo json_encode($row);
+            
+        } else {
+            $respuesta = array(
+                "success" => false,
+                "message" => "Cliente no existe"
+            );
+
+            // Convertir mensaje en Json
+            header('Content-Type: application/json');
+            echo json_encode($respuesta);
+        }
+
+       
+        
+        $db->close();
+
+      
+    }
 ?>
 
 

@@ -25,44 +25,84 @@
                 <legend>Nuevo Registro</legend>
                 <div class="contenedor_campo">
                     <div class="campo">
-                        <label for="">Transacción</label>  
-                        <select class="input" id="tipoTransaccion">
+                        <label for="tipoTransaccion">Transacción</label>  
+                            <select class="input"                   
+                                id="tipoTransaccion"
+                                name="tipoTransaccion" 
+                            >
                             <option value>Seleccione Opción</option>
                         </select>
                     </div>             
                     <div class="campo">
-                        <label for="">Monto Recibido</label>
-                        <input class="input"type="number" placeholder="Monto Recibido">
+                        <label for="">montoRecibido</label>
+                        <input class="input"
+                        type="number" 
+                        placeholder="Monto Recibido"
+                        name="montoRecibido"
+                        id="montoRecibido"
+                        
+                    >
                     </div>
                     <div class="campo">
-                        <label for="">Moneda</label>
-                        <select class=" input select_moneda" id="tipoMoneda">
+                        <label for="tipoMoneda">Moneda</label>
+                            <select class=" input select_moneda"    name="tipoMoneda" 
+                            id="tipoMoneda" 
+                            >
+                            
                             <option value="">Tipo Moneda</option>
+                            
                         </select>
                     </div>
                     <div class="campo">
-                        <label for="">Tasa</label>
-                        <input class="input"type="number" placeholder="Tasa">
+                        <label for="ultimaTasa">Tasa</label>
+                        <input class="input"
+                        type="number" 
+                        name="ultimaTasa"
+                        placeholder="Tasa" 
+                        id="ultimaTasa" readonly
+                        
+                    >
                     </div>
                     <div class="campo">
-                        <label for="">Comisión</label>
-                        <input class="input"type="number" placeholder="Comisión">
+                        <label for="ultimaComision">Comisión</label>
+                        <input class="input"
+                        type="number" 
+                        name="ultimaComision"
+                        placeholder="Comisión"
+                        id="ultimaComision" readonly
+                    >
                     </div>
                     <div class="campo">
-                        <label for="">Total Comisión</label>
-                        <input class="input"type="number" placeholder="Total Comisión">
+                        <label for="totalComision">Total Comisión</label>
+                        <input class="input"
+                        type="number" 
+                        name="totalComision"
+                        placeholder="Total Comisión"
+                        id="totalComision" readonly>
                     </div>
                     <div class="campo">
-                        <label for="">Monto Entregar</label>
-                        <input class="input"type="number" placeholder="Monto Entregar">
+                        <label for="montoEntregar">Monto Entregar</label>
+                        <input class="input"
+                        type="number"
+                        name="montoEntregar"
+                         placeholder="Monto Entregar"
+                         id="montoEntregar" readonly>
                     </div>   
                     <div class="campo">
-                        <label for="">Cédula</label>
-                        <input class="input"type="number" placeholder="Cédula">
+                        <label for="numeroDocumento">Numero Documento</label>
+                        <input class="input"
+                        type="text" 
+                        placeholder="Numero Documento"
+                        name="numeroDocumento"
+                        id="numeroDocumento"> 
                     </div>
                     <div class="campo">
-                        <label for="">Nombre</label>
-                        <input class="input"type="text" placeholder="Nombre Completo">
+                        <label for="nombreCliente">Nombre Cliente</label>
+                        <input class="input"
+                        type="text" 
+                        placeholder="Nombre Cliente"
+                        name="nombreCLiente"
+                        id="nombreCliente" readonly> 
                     </div>
                     <div>
                         <input class="boton" type="submit" value="Registrar">
@@ -72,5 +112,6 @@
         </form>
     </section>
     <script src="js/compraVenta.js" type="module"></script>
+    <script src="js/sweetalert2.js"></script>
 </body>
 </html>
