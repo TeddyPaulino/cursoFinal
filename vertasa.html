@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/fontawesome/css/all.css">
+    <link rel="stylesheet" href="/css/vertasa.css">
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body >
@@ -18,31 +19,32 @@
             <i class="fa-regular fa-user icono"></i>     
         </div>
     </div>
-    <div class="wrapperr">
-  
-        <div class="form-box.login">
-            <h2>Login</h2>
-            <form action="#">
-                <div class="input-box">
-                    <input type="text" required>
-                    <label> Username</label>
-                    <i class='bx bxs-user'></i>
-                 </div>
-                 <div class="input-box">
-                    <input type="Password" required>
-                    <label> Password</label>
-                    <i class='bx bxs-lock-alt'></i>
-                </div>
-               <button id="miBoton" type="submit" class="btn" value="">Login
-               </button>
-             </form>
-        </div>
-          <div class="info-text login">
-            <h2>Express Exchanger</h2>
-        </div>
-     </div>
-    
-    <script src="script.js"></script>
+    <div>
+      <table class="tables">
+        <caption class="titulo-tabla">Tasas de Cambio</caption>
+        <thead>
+          <tr>
+            <th>Moneda</th>
+            <th>Compra</th>
+            <th>Venta</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Dólar</td>
+            <td>50.75</td>
+            <td>50.92</td>
+          </tr>
+          <tr>
+            <td>Euro</td>
+            <td>56.80</td>
+            <td>60.00</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
      
 </body>
 </html>

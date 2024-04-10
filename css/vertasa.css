@@ -1,0 +1,42 @@
+h1{
+    margin-top: 20px;
+}
+
+
+.titulo-tabla {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    margin: 19px;
+    padding: 15px;
+    background-color:#0097a7;
+}
+
+
+tables {
+    font-size: 24px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 600px;
+    margin: 300px auto;
+    font-size: 15px;
+}
+  
+
+th, td {
+    font-size: 20px;
+    border: 3px solid #ddd;
+    padding: 20px;
+    text-align: center;
+}
+  
+th {
+    background-color: #f2f2f2;
+}
+  
+tbody tr:nth-child(even) {
+    background-color:#f2f2f2;
+}
+
