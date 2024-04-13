@@ -1,19 +1,24 @@
 (function() {
     document.addEventListener('DOMContentLoaded', () => {
-        llenarSelectTipoMoneda();   
+        llenarSelectTipoMonedaDestino(); 
+        llenarSelectTipoMonedaOrigen()  
         llenarSelectTipoTransaccion();
               
     });
 
+    const formulario = document.querySelector('#formulario');
+    formulario.addEventListener('submit', agregarRegistro);
 
+    const montoRecibidoInput = document.querySelector('#montoRecibido');
+    
 
-    let montoRecibidoInput = document.querySelector('#montoRecibido');
-    const numeroDocumento = document.querySelector('#numeroDocumento');
-
-    const tasaInput = document.querySelector('#ultimaTasa')
+    const tasaInput = document.querySelector('#ultimaTasa');
 
     const comisionInput = document.querySelector('#ultimaComision');
-
+    const totalComisionInput = document.querySelector('#totalComision');
+    const montoEntregarInput = document.querySelector('#montoEntregar');
+    const numeroDocumento = document.querySelector('#numeroDocumento');
+    const nombreCliente = document.querySelector('#nombreCliente');
     
 
     document.addEventListener('change', obtenerTasaDia);
@@ -24,8 +29,10 @@
     montoRecibidoInput.addEventListener('blur', calcularVentaCompra);
     tasaInput.addEventListener('blur', calcularVentaCompra);
     comisionInput.addEventListener('blur', calcularCambioDivisa);
-
-
+    totalComisionInput.addEventListener('blur', calcularVentaCompra);
+    montoEntregarInput.addEventListener('blur', calcularVentaCompra);
+    
+    // const nombreUsuario = document.querySelector("$usuarioLabel").innerText;
     // Funcion que llena el select en html
     function llenarSelectTipoTransaccion() {
         const tipoTransaccion = document.querySelector('#tipoTransaccion')
@@ -47,10 +54,9 @@
         })
         // .catch(error => console.error('Error:', error));
     }
-
     // Funcion que llena el select en html
-    function llenarSelectTipoMoneda() {
-        const tipoMoneda = document.querySelector('#tipoMoneda');
+    function llenarSelectTipoMonedaOrigen() {
+        const monedaOrigen = document.querySelector('#monedaOrigen');
         // Realizar la solicitud para obtener los datos desde PHP
         fetch('http://localhost:3000/selectTipoMoneda.php')
         .then(response => response.json())
@@ -60,49 +66,60 @@
             const optionElement = document.createElement('option');
             optionElement.value = option.id;
             optionElement.textContent = option.nombre;
-            tipoMoneda.appendChild(optionElement);
+            monedaOrigen.appendChild(optionElement);
+        });
+        })
+        // .catch(error => console.error('Error:', error));
+    }
+
+    // Funcion que llena el select en html
+    function llenarSelectTipoMonedaDestino() {
+        const monedaDestino = document.querySelector('#monedaDestino');
+        // Realizar la solicitud para obtener los datos desde PHP
+        fetch('http://localhost:3000/selectTipoMoneda.php')
+        .then(response => response.json())
+        .then(respuesta => {
+            // Agregar cada opción al select
+            respuesta.forEach(option => {
+            const optionElement = document.createElement('option');
+            optionElement.value = option.id;
+            optionElement.textContent = option.nombre;
+            monedaDestino.appendChild(optionElement);
         });
         })
         // .catch(error => console.error('Error:', error));
     }
 
     // Funcion que obtiene la ultima tasa del dia
-    function obtenerTasaDia() {
-       
-        let tipoTransaccion = document.querySelector('#tipoTransaccion').value;
-
-        console.log(tipoTransaccion)
-
-        let tipoMoneda = document.querySelector('#tipoMoneda').value;
-        console.log(tipoMoneda)
-        fetch('http://localhost:3000/obtenerTasaDia.php?tipoTransaccion=' + tipoTransaccion + '&tipoMoneda=' + tipoMoneda)
+    function obtenerTasaDia(e) {
+        const tipoTransaccion = document.querySelector('#tipoTransaccion').value;
+        const monedaOrigen = document.querySelector('#monedaOrigen').value;
+        const monedaDestino = document.querySelector('#monedaDestino').value;
+        
+        fetch('http://localhost:3000/obtenerTasaDia.php?tipoTransaccion=' + tipoTransaccion + '&monedaOrigen=' + monedaOrigen + '&monedaDestino=' + monedaDestino )
         .then(response => response.json())
         .then(resultado => {
-            console.log(resultado)
+            console.log(resultado) 
             tasaInput.value = parseFloat(resultado.tasa_dia);
 
             calcularVentaCompra(parseFloat(tasaInput.value))
+           
             
-
-            // document.querySelector('#ultimaTasa').value = resultado.tasa_dia
-
         })
         // .catch(error => console.error('Error:', error));
     }
 
-    // obtenerTasaDia();
-
-
     // Funcion que obtiene la ultima comision
     function obtenerComision() {
-        let tipoTransaccion = document.querySelector('#tipoTransaccion').value;
+        const tipoTransaccion = document.querySelector('#tipoTransaccion').value;
 
         console.log(tipoTransaccion)
 
-        let tipoMoneda = document.querySelector('#tipoMoneda').value;
+        const monedaOrigen = document.querySelector('#monedaOrigen').value;
+        // const monedaDestino = document.querySelector('#monedaDestino').value;
        
 
-        fetch('http://localhost:3000/obtenerComision.php?tipoTransaccion=' + tipoTransaccion + '&tipoMoneda=' + tipoMoneda)
+        fetch('http://localhost:3000/obtenerComision.php?tipoTransaccion=' + tipoTransaccion + '&monedaOrigen=' + monedaOrigen)
         .then(response => response.json())
         .then(resultado => {
             console.log(resultado)
@@ -110,14 +127,10 @@
 
             calcularVentaCompra(parseFloat(comisionInput.value))
         
-            // document.querySelector('#ultimaComision').value = resultado.comision_dia
-
         })
         // .catch(error => console.error('Error:', error));
     }
 
-    // obtenerComision();
-    
     function obtenerCliente(e) {
         const documento = e.target.value;
 
@@ -134,49 +147,136 @@
         .then(resultado => {
             console.log(resultado)
 
-            document.querySelector('#nombreCliente').value = resultado.nombre_apellido
+            if (resultado.success === false) {
+                Swal.fire({
+                    icon: "error",
+                    title: resultado.message,
+                });
+            } else {
+                
+                nombreCliente.value = resultado.nombre_apellido;
+            }
 
         })
         // .catch(error => console.error('Error:', error));
         }
     }
 
-    // obtenerCliente()
-
     function validarMonto(e) {
         const montoRecibido = parseFloat(e.target.value);
 
         montoRecibidoInput = montoRecibido
-
-        // console.log(montoRecibidoInput);
         
         calcularVentaCompra(montoRecibidoInput.value)
     }
     
-    function calcularCambioDivisa( monto, tasa) {
+    function calcularCambioDivisa( monto, tasa, tipoTransaccion  ) {
          
-        return monto * tasa
-        
-        
-     
+        if (tipoTransaccion === '1') {
+            return monto * tasa;
+        } else {
+            return monto / tasa;
+
+            
+        }  
     }
 
-    // function calcularComision(comision) {
-    //     console.log(comision)
-    // }
+    function calcularComision(monto, comision, tipoTransaccion) {
+
+        if (tipoTransaccion === '1') {
+
+            return monto * comision;
+        } else {
+            return monto * comision;
+        }
+    }
+
+    function calcularMontoEntregar(montoCambiar, totalComision, tipoTransaccion) {
+        if (tipoTransaccion === '1') {
+            return montoCambiar - totalComision;
+        } else {
+            return montoCambiar - totalComision;
+        }
+    }
 
     function calcularVentaCompra( ) {
-        
+        const tipoTransaccion = document.querySelector('#tipoTransaccion').value;
         const monto = parseFloat(montoRecibidoInput.value);
         const tasa = parseFloat(tasaInput.value);
-        const comision = parseFloat(comisionInput.value);
-        console.log(monto)
-        console.log(tasa)
-        console.log(comision)
+        const comision = parseFloat(comisionInput.value).toFixed(3);
+        let totalComision;
+        let montoCambiar = calcularCambioDivisa(monto, tasa, tipoTransaccion);
+        console.log(montoCambiar)
+        if (tipoTransaccion === '1') {
+           totalComision = calcularComision(monto, comision, tipoTransaccion);
+           totalComisionInput.value = totalComision;
+          
+        } else {
+            totalComision = calcularComision(monto, comision, tipoTransaccion);
+            console.log(totalComision);
+            totalComisionInput.value = totalComision.toFixed(2);
+           
+        }
+        let montoEntregar = calcularMontoEntregar(montoCambiar, totalComision, tipoTransaccion);
+        montoEntregarInput.value = montoEntregar.toFixed(2);
+        console.log(montoEntregar);
+        
         // let montoCambiar = calcularCambioDivisa(monto, tasa)
         // console.log(montoCambiar)
     }
 
+    function agregarRegistro(e) {
+        e.preventDefault();
+        
+        const transaccionSelect = document.querySelector('#tipoTransaccion').value;
+        const monedaOrigen = document.querySelector('#monedaOrigen').value;
+
+        if (transaccionSelect === '' || monedaOrigen === '' || montoRecibidoInput.value === '' ||
+        monedaDestino === '' || tasaInput.value === '' || comisionInput.value === '' ||
+        totalComisionInput.value === '' || montoEntregarInput.value === '' || numeroDocumento.value === '' || 
+         nombreCliente.value === '' ) {
+            Swal.fire({
+                icon: "error",
+                title: 'Todos los campos son obligatorios...',
+            });
+        
+        } else {
+            let data = new FormData(formulario);
+
+            console.log(data)
+
+            fetch('http://localhost:3000/agregarTransaccion.php', {
+            
+            method: 'POST',
+            body: data
+            
+            })
+            .then(response => response.json())
+            .then(respuesta => {
+
+                if (respuesta.success === false) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: respuesta.message,
+                        
+                    });
+                } else {
+                    Swal.fire({
+                        position: "top-center",
+                        icon: "success",
+                        title: respuesta.message,
+                        showConfirmButton: false,
+                        timer: 5000,
+
+                    });
+                }    
+            })   
+        }
+
+        formulario.reset();
+        
+    }
     
 
 })();

@@ -15,12 +15,12 @@
     <div class="bg">
         <div class="logo_user contenedor">
             <h1 class="nombre_logo">ExpressExchanger</h1>    
-            <h2 class="nombre_usuario">Usuario</h2>
+            <h2 class="nombre_usuario" id="nombreUsuario" name="nombreUsuario">Usuario</h2>
             <i class="fa-regular fa-user icono"></i>     
         </div>
     </div>
     <section class="seccion">
-        <form action="" class="formulario">
+        <form action="" class="formulario" id="formulario">
             <fieldset>
                 <legend>Nuevo Registro</legend>
                 <div class="contenedor_campo">
@@ -31,6 +31,15 @@
                                 name="tipoTransaccion" 
                             >
                             <option value>Seleccione Opción</option>
+                        </select>
+                    </div>   
+                    <div class="campo">
+                        <label for="monedaOrigen">Moneda Origén</label>  
+                            <select class="input"                   
+                                id="monedaOrigen"
+                                name="monedaOrigen" 
+                            >
+                            <option value>Moneda Origen</option>
                         </select>
                     </div>             
                     <div class="campo">
@@ -44,12 +53,12 @@
                     >
                     </div>
                     <div class="campo">
-                        <label for="tipoMoneda">Moneda</label>
-                            <select class=" input select_moneda"    name="tipoMoneda" 
-                            id="tipoMoneda" 
+                        <label for="tipoMoneda">Moneda Destino</label>
+                            <select class=" input select_moneda"    name="monedaDestino" 
+                            id="monedaDestino" 
                             >
                             
-                            <option value="">Tipo Moneda</option>
+                            <option value="">Moneda Destino</option>
                             
                         </select>
                     </div>

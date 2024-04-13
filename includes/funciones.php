@@ -314,13 +314,14 @@ function selectTipoMoneda() {
 
  function agregarTasa() {
     require 'conexion.php';
-    $selectTransaccion = $_POST['selectTransaccion'];
-    $selectTasa = $_POST['selectTasa'];
+    $monedaOrigen = $_POST['monedaOrigen'];
+    $monedaDestino = $_POST['monedaDestino'];
     $tasaDia = $_POST['tasaDia'];
+    $selectTransaccion = $_POST['selectTransaccion'];
 
     // Insertar datos a la base de datos
-    $sql = "INSERT INTO tasa_cambio(tipo_moneda_id , tasa_dia, tipo_transaccion_id)
-    VALUES ('$selectTasa', '$tasaDia', '$selectTransaccion')";
+    $sql = "INSERT INTO tasa_cambio(tipo_moneda_id,tasa_dia, tipo_transaccion_id, tipo_moneda_id_destino)
+    VALUES ('$monedaOrigen','$tasaDia','$selectTransaccion' , '$monedaDestino')";
 
     if (mysqli_query($db, $sql)) {
     $respuesta = array(
@@ -371,7 +372,7 @@ function selectTipoTransaccion() {
     $comision = $_POST['comision'];
 
     // Insertar datos a la base de datos
-    $sql = "INSERT INTO comision(tipo_transaccion_id , tipo_moneda_id, comision)
+    $sql = "INSERT INTO comision(tipo_transaccion_id , tipo_moneda_id, comision_dia)
     VALUES ('$tipoTransaccion', '$tipoMoneda', '$comision')";
 
     if (mysqli_query($db, $sql)) {
@@ -618,10 +619,11 @@ function obtenerUltimaTasa() {
 
     // Obtener los parámetros desde la solicitud
     $tipoTransaccion = $_GET['tipoTransaccion'];
-    $tipoMoneda = $_GET['tipoMoneda'];
+    $monedaOrigen = $_GET['monedaOrigen'];
+    $monedaDestino = $_GET['monedaDestino'];
 
     // Consulta para obtener la última tasa de cambio según el tipo de transacción y tipo de moneda
-    $sql = "SELECT tasa_dia FROM tasa_cambio WHERE tipo_moneda_id='$tipoMoneda' AND tipo_transaccion_id='$tipoTransaccion' ORDER BY fecha DESC LIMIT 1";
+    $sql = "SELECT tasa_dia FROM tasa_cambio WHERE tipo_moneda_id='$monedaOrigen' AND tipo_moneda_id_destino= '$monedaDestino' AND tipo_transaccion_id='$tipoTransaccion' ORDER BY fecha DESC LIMIT 1";
     $resultado = $db->query($sql);
 
     
@@ -636,17 +638,16 @@ if ($resultado->num_rows > 0) {
     $db->close();
     }
 
-
     function obtenerComision() {
         require 'conexion.php';
     
         // Obtener los parámetros desde la solicitud
         $tipoTransaccion = $_GET['tipoTransaccion'];
-        $tipoMoneda = $_GET['tipoMoneda'];
+        $monedaOrigen = $_GET['monedaOrigen'];
     
         // Consulta para obtener la última tasa de cambio según el tipo de transacción y tipo de moneda
         $sql = "SELECT comision_dia FROM comision 
-        WHERE tipo_transaccion_id = '$tipoTransaccion' AND tipo_moneda_id ='$tipoMoneda' ORDER BY fecha DESC LIMIT 1";
+        WHERE tipo_transaccion_id = '$tipoTransaccion' AND tipo_moneda_id ='$monedaOrigen' ORDER BY fecha DESC LIMIT 1";
         $resultado = $db->query($sql);
     
         
@@ -696,6 +697,82 @@ if ($resultado->num_rows > 0) {
 
       
     }
+
+    function agregarTransaccion() {
+        require 'conexion.php';
+
+        $tipoTransaccion = $_POST['tipoTransaccion'];
+        $montoRecibido = $_POST['montoRecibido'];
+        $monedaDestino = $_POST['monedaDestino'];
+        $ultimaTasa = $_POST['ultimaTasa'];
+        $ultimaComision = $_POST['ultimaComision'];
+        $totalComision = $_POST['totalComision'];
+        $montoEntregar = $_POST['montoEntregar'];
+        $numeroDocumento = $_POST['numeroDocumento'];
+        $nombreCLiente = $_POST['nombreCLiente'];
+        $monedaOrigen = $_POST['monedaOrigen'];
+        
+        // $usuario = $_POST['nombreUsuario'];
+        
+        // Obtener el número de factura actual y actualizar el contador
+        $sql = "SELECT numero FROM contador_facturas FOR UPDATE";
+        $resultado = $db->query($sql);
+        $row = $resultado->fetch_assoc();
+        $numero_factura = $row['numero'];
+
+        $new_numero_factura = $numero_factura + 1;
+        // Acutlizar el numero de factura
+        $sql_update = "UPDATE contador_facturas SET numero = $new_numero_factura";
+
+        $db->query($sql_update);
+
+        if ($tipoTransaccion === '1') {
+            
+            // Insertar datos a la base de datos
+            $sql = "INSERT INTO venta(tipo_transaccion_id, monto_recibido, tipo_moneda_id, tasa_cambio, comision,  total_comision, monto_entregar, documento, nombre_cliente, tipo_moneda_id_destino, numero_factura)
+             VALUES ('$tipoTransaccion', '$montoRecibido', '$monedaDestino',  '$ultimaTasa', '$ultimaComision','$totalComision', '$montoEntregar', '$numeroDocumento', '$nombreCLiente', '$monedaOrigen', '$numero_factura')";
+
+            if (mysqli_query($db, $sql)) {
+                $respuesta = array(
+                    "success" => true,
+                    "message" => "Registro insertado correctamente."
+                );
+            } else {
+                $respuesta = array(
+                    "success" => false,
+                    "message" => "Error al insertar datos: " . $$db->error
+                );
+            }
+            
+            // Convertir mensaje en Json
+            header('Content-Type: application/json');
+            echo json_encode($respuesta);
+            // Cerrar la conexion
+            
+        }else {
+            // Insertar datos a la base de datos
+            $sql = "INSERT INTO compra(tipo_transaccion_id, monto_recibido, tipo_moneda_id, tasa_cambio, comision,  total_comision, monto_entregar, documento, nombre_cliente, tipo_moneda_id_destino, numero_factura)
+             VALUES ('$tipoTransaccion', '$montoRecibido', '$monedaDestino',  '$ultimaTasa', '$ultimaComision','$totalComision', '$montoEntregar', '$numeroDocumento', '$nombreCLiente', '$monedaOrigen', '$numero_factura')";
+
+            if (mysqli_query($db, $sql)) {
+                $respuesta = array(
+                    "success" => true,
+                    "message" => "Registro insertado correctamente."
+                );
+            } else {
+                $respuesta = array(
+                    "success" => false,
+                    "message" => "Error al insertar datos: " . $$db->error
+                );
+            }
+            
+            // Convertir mensaje en Json
+            header('Content-Type: application/json');
+            echo json_encode($respuesta);
+            // Cerrar la conexion
+        }
+        $db->close(); 
+    }      
 ?>
 
 

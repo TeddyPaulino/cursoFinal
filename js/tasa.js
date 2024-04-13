@@ -1,7 +1,8 @@
 (function() {
     document.addEventListener('DOMContentLoaded', () => {
-        llenarSelectTipoMoneda(); 
-        llenarSelectTipoTransaccion();       
+        llenarSelectTipoTransaccion();
+        llenarSelectTipoMonedaOrigen(); 
+        llenarSelectTipoMonedaDestino()       
     });
 
     const formularioTasa = document.querySelector('#formularioTasa');
@@ -29,9 +30,9 @@
 
 
     // Funcion que llena el select en html
-    function llenarSelectTipoMoneda() {
-        const selectTasa = document.querySelector('#selectTasa');
-        console.log(selectTasa)
+    function llenarSelectTipoMonedaOrigen() {
+        const monedaOrigen = document.querySelector('#monedaOrigen');
+     
         // Realizar la solicitud para obtener los datos desde PHP
         fetch('http://localhost:3000/selectTipoMoneda.php')
         .then(response => response.json())
@@ -42,7 +43,26 @@
             optionElement.value = option.id;
             optionElement.textContent = option.nombre;
 
-            selectTasa.appendChild(optionElement);
+            monedaOrigen.appendChild(optionElement);
+        });
+        })
+        // .catch(error => console.error('Error:', error));
+    }
+
+    function llenarSelectTipoMonedaDestino() {
+        const monedaDestino = document.querySelector('#monedaDestino');
+     
+        // Realizar la solicitud para obtener los datos desde PHP
+        fetch('http://localhost:3000/selectTipoMoneda.php')
+        .then(response => response.json())
+        .then(respuesta => {
+            // Agregar cada opción al select
+            respuesta.forEach(option => {
+            const optionElement = document.createElement('option');
+            optionElement.value = option.id;
+            optionElement.textContent = option.nombre;
+
+            monedaDestino.appendChild(optionElement);
         });
         })
         // .catch(error => console.error('Error:', error));
@@ -51,16 +71,19 @@
         e.preventDefault();
         const tipoTransaccion = document.querySelector('#selectTransaccion').value;
         console.log(tipoTransaccion)
-        const tipoMoneda = document.querySelector('#selectTasa').value;
-        console.log(tipoMoneda)
+        const monedaOrigen = document.querySelector('#monedaOrigen').value;
+        const monedaDestino = document.querySelector('#monedaDestino').value;
         const tasaDia = document.querySelector('#tasaDia').value;
 
-        console.log(tasaDia)
-        if (tipoTransaccion === '' || tipoMoneda === '' || tasaDia === '') {
-            mostrarMensaje();
+        if (tipoTransaccion === '' || monedaOrigen === '' || monedaDestino === '' || tasaDia === '') {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Todos los campos son obligatorios...",
+                
+            });
         } else {
             let data = new FormData(formularioTasa);
-
             console.log(data)
 
             fetch('http://localhost:3000/agregarTasa.php', {
@@ -94,14 +117,4 @@
         }
     }
 
-    function mostrarMensaje() {
-        const divMensaje = document.createElement('div');
-        divMensaje.classList.add('mensaje');
-        divMensaje.textContent = 'Todos los campos son obligatorios';
-        
-        formularioTasa.insertBefore(divMensaje, document.querySelector('form submit'));
-        setTimeout(() => {
-            divMensaje.remove();
-        },4000 )    
-       }
 })();

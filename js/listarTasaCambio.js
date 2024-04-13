@@ -14,11 +14,12 @@
         console.log(resultado)
         
          resultado.forEach(row => {
-            const {id, tipo_moneda_id , tipo_transaccion_id ,tasa_dia, fecha} = row
+            const {id, tipo_moneda_id ,tipo_moneda_id_destino, tipo_transaccion_id ,tasa_dia, fecha} = row
              const tr = document.createElement('tr');
              tr.innerHTML = `
                  <td>${id}</td>
                  <td>${tipo_moneda_id}</td>
+                 <td>${tipo_moneda_id_destino}</td>
                  <td>${tipo_transaccion_id}</td>
                  <td>${tasa_dia}</td>
                  <td>${fecha}</td>
