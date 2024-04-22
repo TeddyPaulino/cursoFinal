@@ -230,6 +230,7 @@
         
         const transaccionSelect = document.querySelector('#tipoTransaccion').value;
         const monedaOrigen = document.querySelector('#monedaOrigen').value;
+        const monedaDestino = document.querySelector('#monedaDestino').value;
 
         if (transaccionSelect === '' || monedaOrigen === '' || montoRecibidoInput.value === '' ||
         monedaDestino === '' || tasaInput.value === '' || comisionInput.value === '' ||
@@ -253,7 +254,9 @@
             })
             .then(response => response.json())
             .then(respuesta => {
+                const id = respuesta.id;
 
+                window.location.href = `ticket.php?id=${id}`;
                 if (respuesta.success === false) {
                     Swal.fire({
                         icon: "error",
@@ -265,14 +268,20 @@
                     Swal.fire({
                         position: "top-center",
                         icon: "success",
-                        title: respuesta.message,
+                        title: "Transaccion creada correctamente...",
                         showConfirmButton: false,
-                        timer: 5000,
+                        timer: 3000,
+
+                        
 
                     });
-                }    
-            })   
+                }  
+                // Redireccionar al usuario a la página de ticket con el ID de la transacción
+               
+            }) 
+            
         }
+        
 
         formulario.reset();
         

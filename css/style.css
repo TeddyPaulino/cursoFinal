@@ -8,8 +8,6 @@ html {
     font-size: 62.5%;  
 }
 
-
-
 .padding {
     padding: 2.5rem;
 }
@@ -44,6 +42,9 @@ html {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+.logo_user a {
+    text-decoration: none;
 }
 
 .nombre_logo {

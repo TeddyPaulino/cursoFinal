@@ -40,8 +40,12 @@
                         showConfirmButton: false,
                         timer: 5000
                     });
+                    setTimeout(() => {
+                        window.location.href = 'listaTipoMoneda.html';
+                    },5000)
                 }    
-            })   
+            }) 
+                
         }
         
         formularioMoneda.reset();

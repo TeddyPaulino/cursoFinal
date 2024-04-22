@@ -15,7 +15,7 @@
 <body>
     <div class="bg">
         <div class="logo_user contenedor">
-            <h1 class="nombre_logo">ExpressExchanger</h1>    
+            <a href="menu.html"><h1 class="nombre_logo">ExpressExchanger</h1></a>   
             <h2 class="nombre_usuario">Usuario</h2>
             <i class="fa-regular fa-user icono"></i>     
         </div>
@@ -35,19 +35,21 @@
           <table class="table table-bordered input-text">
             <thead class="bg">
               <tr class="text-light text-uppercase input-text">
+                <th>Id</th>
                 <th>Tipo Transacción</th>
                 <th>Monto Recibido</th>
-                <th>Tipo Moneda</th>
+                <th>Moneda Origen</th>
                 <th>Tasa</th>
                 <th>Comisión</th>
                 <th>Total Comisión</th>
+                <th>Moneda Destino</th>
                 <th>Monto Entregar</th>
-                <th>Cédula</th>
+                <th>Documento</th>
                 <th>Nombre</th>
                 <th>Fecha</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody id="listaTransaccion">
               <!-- Datos de ejemplo, reemplázalos con tus datos reales -->
              
               <!-- ... Más filas ... -->
@@ -80,6 +82,7 @@
     window.location.href = "ventaCompra.html";
     });
   </script>
+  <script src="js/listaTransaccion.js" type="module"></script>
     
 </body>
 </html>

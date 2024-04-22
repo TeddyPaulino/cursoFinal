@@ -38,8 +38,11 @@
                         showConfirmButton: false,
                         timer: 5000
                     });
+                    setTimeout(() => {
+                        window.location.href = 'listaDocumento.html';
+                    },5000) 
                 }    
-            })   
+            })    
         }
         
         formulario.reset();

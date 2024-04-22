@@ -61,18 +61,24 @@
                         text: respuesta.message,
                         
                     });
+                    return
                 } else {
                     Swal.fire({
                         position: "top-center",
                         icon: "success",
                         title: respuesta.message,
                         showConfirmButton: false,
-                        timer: 3000
+                        timer: 5000
                     });
-                }    
-            })   
-            formularioUsuario.reset();
+                    setTimeout(() => {
+                        window.location.href = 'listaUsuario.html';
+                    },5000)   
+                }
+                      
+            }) 
+             
         }
+        formularioUsuario.reset();
 
         function mostrarMensaje() {
             const divMensaje = document.createElement('div');

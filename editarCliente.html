@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Cliente</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/fontawesome/css/all.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="bg">
+        <div class="logo_user contenedor">
+           <a href="menu.html"><h1 class="nombre_logo">ExpressExchanger</h1></a>   
+            <h2 class="nombre_usuario">Clientes</h2>
+            <i class="fa-regular fa-user icono"></i>     
+        </div>
+    </div>
+ 
+    <section class="seccion">
+        <form action="" class="formulario" id="formularioCliente">
+            <fieldset>
+                <legend>Editar Cliente <i class="fa-solid fa-people-line"></i> </legend>
+                <div class="contenedor_campo">           
+                    <div class="campo">
+                        <label for="nombre">Nombre</label>
+                        <input class="input"type="text" placeholder="Nombre" name="nombre" id="nombrecliente">
+                    </div>
+                    <div class="campo">
+                        <label for="apellido">Apellido</label>
+                        <input class="input"type="text" placeholder="Apellido" name="apellido" id="apellidoCliente">
+                    </div>
+                    <div class="campo">
+                        <label for="direccion">Dirección</label>
+                        <input class="input"type="text" placeholder="Dirección" name="direccion" id="direccionCliente">
+                    </div>
+                    <div class="campo">
+                        <label for="telefono">Telefono</label>
+                        <input class="input"type="tel" placeholder="Telefono" name="telefono" id="telefonoCliente">
+                    </div>
+                    <div class="campo">
+                        <label for="tipoDocumento">Tipo Documento</label>
+                        <select class="input select_moneda" id="tipoDocumentCliente" name="tipoDocumento">
+                            <option selected disabled value = "">Tipo Dcumento</option>    
+                        </select>
+                    </div>
+                    <div class="campo">
+                        <label for="cedula">Documento</label>
+                        <input class="input"type="text" placeholder="Documento del cliente" name="cedula" id="cedulaCliente">
+                    </div>   
+                    <div class="campo">
+                        <label for="correo">Email</label>
+                        <input class="input"type="email" placeholder="Correo Electronico" name="correo" id="emailCliente">
+                    </div>
+                    <input type="hidden" name="id" id="id" value="">
+                    <div>
+                        <input class="boton" type="submit" value="Registrar">
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </section>
+
+    <script src="js/editarCliente.js" type="module"></script>
+    <script src="js/sweetalert2.js"></script>
+</body>
+</html>

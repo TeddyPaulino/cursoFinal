@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Moneda</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/fontawesome/css/all.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="bg">
+        <div class="logo_user contenedor">
+            <a href="menu.html"><h1 class="nombre_logo">ExpressExchanger</h1></a>    
+            <h2 class="nombre_usuario">Usuario</h2>
+            <i class="fa-regular fa-user icono"></i>     
+        </div>
+    </div>
+    <section class="seccion">
+        <form action="" class="formulario" id="formularioMoneda">
+            <fieldset>
+                <legend>Editar Moneda</legend>
+                <div class="contenedor_campo">           
+                    <div class="campo">
+                        <label for="EditarMoneda">Nombre</label>
+                        <input class="input"type="text" name="EditarMoneda"   id="EditarMoneda"placeholder="Nombre de la Moneda">
+                    </div> 
+                    <div class="campo">
+                        <label for="editarCodigoMoneda">Codigo Moneda</label>
+                        <input class="input"type="text" name="editarCodigoMoneda" id="editarCodigoMoneda" placeholder="Codigo de la Moneda ej: DOM">
+                    </div> 
+                    <div>
+                        <input class="boton" type="submit" value="Actualizar">
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </section>
+    <script src="js/editarMoneda.js" type="module"></script>
+    <script src="js/sweetalert2.js"></script>
+</body>
+</html>

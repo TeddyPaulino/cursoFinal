@@ -4,7 +4,7 @@
     })
     
     const listaTransaccion = document.querySelector('#listaTransaccion');
-    // listaComision.addEventListener('click', confirmarComision);
+    listaTransaccion.addEventListener('click', confirmarTipoTransaccion);
     function listarTransaccion() {
         // Hace una petición fetch para obtener los datos de PHP
      fetch('http://localhost:3000/listarTipoTransaccion.php')
@@ -22,9 +22,10 @@
                  <td>${descripcion}</td>
                  <td>${fecha}</td>
                  <td>
-                    <a href="#"><i class="fa-solid fa-pen-to-square editar"></i></a>
-                     <a href="#"><i class="fa-solid fa-trash-can-arrow-up eliminar"></i></a>
+                    <a href="editarTipoTransaccion.html?id=${id}"><i class="fa-solid fa-pen-to-square editar"></i></a>
+                     <a href="#"><i data-transaccion="${id}" class="fa-solid fa-trash-can-arrow-up eliminar"></i></a>
                  </td>
+        
              `;
              listaTransaccion.appendChild(tr);
          });
@@ -32,31 +33,50 @@
     //  .catch(error => console.error('Error:', error));
     }
 
-    function eliminar() {
+    function confirmarTipoTransaccion(e) {
+
         if (e.target.classList.contains( 'eliminar')) {
-
-        }
-
+            const transaccionId = parseInt(e.target.dataset.transaccion);
+            
+            Swal.fire({
+                title: "Estas seguro de eliminarlo...?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete!"
+              }).then((result) => {
+                if (result.isConfirmed) {
+                    
+                    eliminarTipoTransaccion(transaccionId);
+                  Swal.fire({
+                    title: "Deleted!",
+                    text: "Cliente eliminado...",
+                    icon: "success",
+                    
+                  });
+                  setTimeout(() => {
+                    window.location.href = 'listaTipoTransaccion.html';
+                },5000) 
+                  
+                }
+                
+              });       
+        }            
     }
 
-
-    // function confirmarCliente(e) {
-
-    //     if (e.target.classList.contains( 'eliminar')) {
-    //         // const clienteId = parseInt(e.target.dataset.empleado);
-
-    //         console.log("Hola");
-    //         // const idEmpleado = e.target.getAttribute( 'data-empleado' );
+    function eliminarTipoTransaccion(transaccionId ) {
+        console.log(transaccionId)
+        try {
+            fetch(`http://localhost:3000/deleteTipoTrasanccion.php?transaccionId=${transaccionId }`, {
+                method: 'GET'
+            });
     
-    //         // const confirmar = confirm('¿Deseas eliminar este registro?');
+        }catch(error) {
+            console.log(error)
+        }
     
-    
-    //         // if (confirmar) {
-    //         //     eliminarEmpleado( empleadoId );
-    //         // }
-    //     }
-    //     // window.location.href = 'index.html';    
-    // }
+    }
     
      
 })();

@@ -42,7 +42,10 @@
                         timer: 3000
                     });
                 }    
-            })   
+            })  
+            setTimeout(() => {
+                window.location.href = 'listaEstado.html';
+            },5000)   
         }
         
         formularioEstado.reset();

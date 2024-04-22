@@ -110,7 +110,11 @@
                         showConfirmButton: false,
                         timer: 3000
                     });
-                }    
+                    setTimeout(() => {
+                        window.location.href = 'listaTasa.html';
+                    },5000)  
+                } 
+                   
             })   
         
         formularioTasa.reset();

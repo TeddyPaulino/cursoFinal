@@ -43,8 +43,11 @@
                         showConfirmButton: false,
                         timer: 5000
                     });
+                    setTimeout(() => {
+                        window.location.href = 'listaTipoTransaccion.html';
+                    },5000) 
                 }    
-            })   
+            })    
         }
         formularioTipoTransaccion.reset();
     }

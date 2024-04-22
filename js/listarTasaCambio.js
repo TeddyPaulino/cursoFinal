@@ -4,7 +4,7 @@
     })
     
     const listaTasa = document.querySelector('#listaTasaCambio');
-    // listaComision.addEventListener('click', confirmarComision);
+    listaTasa.addEventListener('click', confirmarTasa);
     function listarTasa() {
         // Hace una petición fetch para obtener los datos de PHP
      fetch('http://localhost:3000/listarTasaCambio.php')
@@ -24,8 +24,8 @@
                  <td>${tasa_dia}</td>
                  <td>${fecha}</td>
                  <td>
-                    <a href="#"><i class="fa-solid fa-pen-to-square editar"></i></a>
-                     <a href="#"><i class="fa-solid fa-trash-can-arrow-up eliminar"></i></a>
+                    <a href="editarTasa.html?id=${id}"><i class="fa-solid fa-pen-to-square editar"></i></a>
+                     <a href="#"><i data-tasa="${id}"class="fa-solid fa-trash-can-arrow-up eliminar"></i></a>
                  </td>
              `;
              listaTasa.appendChild(tr);
@@ -34,31 +34,48 @@
     //  .catch(error => console.error('Error:', error));
     }
 
-    function eliminar() {
-        if (e.target.classList.contains( 'eliminar')) {
+    function confirmarTasa(e) {
 
-        }
-
+        if (e.target.classList.contains('eliminar')) {
+            const tasaId = parseInt(e.target.dataset.tasa);
+            
+            Swal.fire({
+                title: "Estas seguro que deseas eliminarlo...?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete!"
+              }).then((result) => {
+                if (result.isConfirmed) {
+                    
+                    eliminarTasa(tasaId);
+                  Swal.fire({
+                    title: "Deleted!",
+                    text: "Rol eliminada...",
+                    icon: "success",
+                    
+                  });
+                  setTimeout(() => {
+                    window.location.href = 'listaTasa.html';
+                },1000) 
+                  
+                }
+                
+              });       
+        }            
     }
 
-
-    // function confirmarCliente(e) {
-
-    //     if (e.target.classList.contains( 'eliminar')) {
-    //         // const clienteId = parseInt(e.target.dataset.empleado);
-
-    //         console.log("Hola");
-    //         // const idEmpleado = e.target.getAttribute( 'data-empleado' );
+    function eliminarTasa(tasaId ) {
+        try {
+            fetch(`http://localhost:3000/deleteTasaCambio.php?tasaId=${tasaId}`, {
+                method: 'GET'
+            });
     
-    //         // const confirmar = confirm('¿Deseas eliminar este registro?');
-    
-    
-    //         // if (confirmar) {
-    //         //     eliminarEmpleado( empleadoId );
-    //         // }
-    //     }
-    //     // window.location.href = 'index.html';    
-    // }
+        }catch(error) {
+            console.log(error)
+        }
+    }
     
      
 })();

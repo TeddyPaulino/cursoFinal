@@ -44,7 +44,10 @@
                         timer: 3000
                     });
                 }    
-            })   
+            })  
+            setTimeout(() => {
+                window.location.href = 'listaUsuario.html';
+            },5000)   
         }
         
         formularioRol.reset();

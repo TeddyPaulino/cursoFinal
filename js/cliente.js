@@ -2,15 +2,16 @@
     document.addEventListener('DOMContentLoaded', () => {
         llenarSelectTipoDocumento();
      });
-   formularioCliente.addEventListener('submit', agregarCliente)
+    
+    const formularioCliente = document.querySelector('#formularioCliente');
+
+    formularioCliente.addEventListener('submit', agregarCliente)
     agregarCliente();
 
      
      // Funcion que llena el select en html
      function llenarSelectTipoDocumento() {
         const select = document.querySelector('#tipoDocumentCliente');
-
-        console.log(select)
 
         // Realizar la solicitud para obtener los datos desde PHP
         fetch('http://localhost:3000/selectTipoDatos.php')
@@ -72,13 +73,14 @@
 
                     });
                 }    
-            })   
+            })
+            setTimeout(() => {
+                window.location.href = 'listaCliente.html';
+            },5000)   
         }
         
         formularioCliente.reset();
-        setTimeout(() => {
-            window.location.href = 'listaCliente.html';
-        },5000)
+       
         
     }   
    
